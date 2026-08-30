@@ -1,0 +1,60 @@
+.hero {
+  background: linear-gradient(160deg, #0f1b33 0%, #0a1226 100%);
+  color: #fff;
+  padding: 9rem 0 66px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(760px 340px at 92% 0%, rgba(247, 181, 0, 0.24), transparent 65%);
+  pointer-events: none;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5.2vw, 4rem);
+  max-width: 20ch;
+  margin: 0 0 18px 0;
+}
+
+.rule {
+  width: 64px;
+  height: 5px;
+  border-radius: 4px;
+  background: var(--grad);
+  margin: 1.5rem 0 22px
+}
+
+.lead{font-size:1.1rem;color:var(--muted);max-width:62ch}
+.dark .lead{color:#B9C3D6}
+
+.subtitle {
+  font-size: 1.16rem;
+  color: var(--muted);
+  max-width: 56ch;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.breadcrumb {
+  font-size: 0.78rem;
+  color: #93a2be;
+  margin-bottom: 14px;
+}
+
+.breadcrumb a {
+  color: #93a2be;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: #ffd34d;
+}

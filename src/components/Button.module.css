@@ -1,0 +1,55 @@
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.variant-gold {
+  background: linear-gradient(135deg, #de9200 0%, #f7b500 45%, #ffd34d 100%);
+  color: #0f1b33;
+  box-shadow: 0 10px 24px rgba(247, 181, 0, 0.32);
+}
+
+.variant-gold:hover {
+  box-shadow: 0 14px 32px rgba(247, 181, 0, 0.4);
+}
+
+.variant-ghost {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  background: transparent;
+}
+
+.variant-ghost:hover {
+  border-color: #f7b500;
+  color: #ffd34d;
+}
+
+.variant-dark {
+  background: #0f1b33;
+  color: #fff;
+}
+
+.variant-dark:hover {
+  background: #0a1226;
+}
+
+.size-default {
+  padding: 13px 26px;
+  font-size: 0.92rem;
+}
+
+.size-large {
+  padding: 16px 36px;
+  font-size: 1rem;
+}

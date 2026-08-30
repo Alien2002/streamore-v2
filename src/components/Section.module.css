@@ -1,0 +1,42 @@
+.section {
+  padding: 86px 0;
+  width: 100%;
+}
+
+.section.tight {
+  padding: 60px 0;
+}
+
+.variant-default {
+  background: #ffffff;
+  color: #101c33;
+}
+
+.variant-alt {
+  background: #f6f8fb;
+  color: #101c33;
+}
+
+.variant-dark {
+  background: #0f1b33;
+  color: #eaeff8;
+}
+
+.variant-dark h1,
+.variant-dark h2,
+.variant-dark h3,
+.variant-dark h4 {
+  color: #fff;
+}
+
+.variant-deep {
+  background: #0a1226;
+  color: #eaeff8;
+}
+
+.variant-deep h1,
+.variant-deep h2,
+.variant-deep h3,
+.variant-deep h4 {
+  color: #fff;
+}

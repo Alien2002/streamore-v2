@@ -1,0 +1,133 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 60;
+  background: rgba(15, 27, 51, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #dde4f0;
+  font-size: 1rem;
+}
+
+.brand svg {
+  height: 34px;
+  width: auto;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #dde4f0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease;
+}
+
+.menu a:hover {
+  color: #fff;
+}
+
+.menu a.active {
+  color: #fff;
+  border-bottom-color: #f7b500;
+}
+
+.cta {
+  white-space: nowrap;
+  /* background: #f7b500;
+  color: #0a1226;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease; */
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 960px) {
+  .burger {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: #0a1226;
+    padding: 8px 24px 20px;
+    display: none;
+    border-bottom: 3px solid #f7b500;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .menu li {
+    width: 100%;
+  }
+
+  .menu a {
+    display: block;
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .cta {
+    display: none;
+  }
+}
