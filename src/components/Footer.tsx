@@ -1,86 +1,8 @@
-import { Link } from 'react-router-dom';
-import Logo from './Logo';
 import styles from './Footer.module.css';
 
-const footerLinks = [
-  {
-    title: 'Product',
-    links: [
-      { label: 'Livestreaming', href: '/livestreaming' },
-      { label: 'Services', href: '/services' },
-      { label: 'Packages', href: '/packages' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', href: '/about' },
-      { label: 'Work', href: '/work' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
-  {
-    title: 'Vertical',
-    links: [
-      { label: 'Industries', href: '/industries' },
-      { label: 'Reliability', href: '/reliability' },
-    ],
-  },
-];
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    // <footer className={styles.footer}>
-    //   <div className={styles.wrap}>
-    //     <div className={styles.content}>
-    //       <div className={styles.brand}>
-    //         <div className={styles.logoBox}>
-    //           <Logo />
-    //         </div>
-    //         <div>
-    //           <h3>Streamore</h3>
-    //           <p>Professional livestreaming & live event production in Tanzania</p>
-    //         </div>
-    //       </div>
-
-    //       <div className={styles.links}>
-    //         {footerLinks.map((group) => (
-    //           <div key={group.title}>
-    //             <h4>{group.title}</h4>
-    //             <ul>
-    //               {group.links.map((link) => (
-    //                 <li key={link.href}>
-    //                   <Link to={link.href}>{link.label}</Link>
-    //                 </li>
-    //               ))}
-    //             </ul>
-    //           </div>
-    //         ))}
-    //       </div>
-    //     </div>
-
-    //     <div className={styles.bottom}>
-    //       <div className={styles.contact}>
-    //         <div>
-    //           <p>
-    //             <strong>Phone:</strong>{' '}
-    //             <a href="tel:+255000000000">+255 000 000 000</a>
-    //           </p>
-    //           <p>
-    //             <strong>Email:</strong>{' '}
-    //             <a href="mailto:info@streamore.co.tz">info@streamore.co.tz</a>
-    //           </p>
-    //         </div>
-    //       </div>
-
-    //       <div className={styles.legal}>
-    //         <p>&copy; {currentYear} Streamore. All rights reserved.</p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </footer>
     <footer>
       <div className={styles.wrap}>
         <div className={styles.fgrid}>

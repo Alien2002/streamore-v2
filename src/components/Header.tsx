@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Logo from './Logo';
 import styles from './Header.module.css';
 
 const navigation = [
@@ -32,10 +31,6 @@ function Header() {
               <path d="M78 30c-6-6-16-9-25-9-14 0-25 7-25 18 0 9 7 14 20 16l14 3c4 1 6 2 6 4 0 3-4 5-11 5-9 0-17-3-23-9l-9 14c8 7 20 11 32 11 15 0 27-7 27-19 0-9-6-14-20-17l-13-3c-4-1-6-2-6-4 0-3 4-4 10-4 8 0 15 2 20 6z" fill="#fff" />
               <text x="112" y="82" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="86" font-weight="800" letter-spacing="-3" fill="#fff">treamore</text>
             </svg></a>
-          {/* <Link to="/" className={styles.brand}>
-            <Logo />
-            <span>Streamore</span>
-          </Link> */}
 
           <button
             className={styles.burger}
