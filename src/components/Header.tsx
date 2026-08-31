@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 
@@ -17,9 +17,19 @@ const navigation = [
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 80); // threshold in px — tune to taste
+    };
+    onScroll(); // set initial state on mount
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.wrap}>
         <nav className={styles.nav}>
           <a className="brand" href="index.html">

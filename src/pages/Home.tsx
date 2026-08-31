@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
 import styles from './Home.module.css';
+import HeroSlideshow from '@/components/HeroSlideShow';
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       {/* Hero */}
       <Section variant="dark" className={styles.hero}>
         <Container>
+          <HeroSlideshow />
           <div className={styles.heroContent}>
             {/* <div className={styles.tag}>
               <span className={styles.dot}></span>

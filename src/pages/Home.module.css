@@ -1,7 +1,14 @@
 .hero {
   position: relative;
-  padding-top: 110px;
-  padding-bottom: 96px;
+  /* padding-top: 110px; */
+  /* padding-bottom: 1rem; */
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 5;
 }
 
 .heroContent h1 {
@@ -157,13 +164,15 @@
 }
 
 .stats {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1px;
   background: rgba(255, 255, 255, .12);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 56px
+  margin-top: 56px;
+  z-index: 5;
 }
 
 .stat {
@@ -498,7 +507,7 @@ section.tight {
 
 .hero .wrap {
   position: relative;
-  z-index: 2
+  z-index: 5
 }
 
 .hero h1 {
