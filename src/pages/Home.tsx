@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
-import Card from '@/components/Card';
 import styles from './Home.module.css';
 
 function Home() {
