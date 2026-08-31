@@ -197,6 +197,50 @@ header.site {
     }
 }
 
+.revealed .revealCard {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.revealed .revealList li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.revealCard {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealList li {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealList li:nth-child(1) { transition-delay: 120ms; }
+.revealList li:nth-child(2) { transition-delay: 310ms; }
+.revealList li:nth-child(3) { transition-delay: 500ms; }
+.revealList li:nth-child(4) { transition-delay: 690ms; }
+.revealList li:nth-child(5) { transition-delay: 880ms; }
+.revealList li:nth-child(6) { transition-delay: 1070ms; }
+.revealList li:nth-child(7) { transition-delay: 1260ms; }
+.revealList li:nth-child(8) { transition-delay: 1450ms; }
+.revealList li:nth-child(9) { transition-delay: 1640ms; }
+.revealList li:nth-child(10) { transition-delay: 1830ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .revealCard,
+  .revealList li {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* buttons */
 .btn {
     display: inline-block;

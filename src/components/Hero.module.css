@@ -33,6 +33,23 @@
   margin: 1.5rem 0 22px
 }
 
+.cursor {
+  display: inline-block;
+  margin-left: 1px;
+  color: var(--gold, currentColor);
+  opacity: 1;
+}
+ 
+.cursorBlink {
+  animation: blink 1s step-end infinite;
+}
+ 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .lead{font-size:1.1rem;color:var(--muted);max-width:62ch}
 .dark .lead{color:#B9C3D6}
 

@@ -29,6 +29,76 @@ a {
     color: var(--gold-lt)
 }
 
+.revealTier {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.revealed .revealTier {
+  opacity: 1;
+  transform: scale(1);
+}
+ 
+.revealTier:nth-child(1) { transition-delay: 0ms; }
+.revealTier:nth-child(2) { transition-delay: 90ms; }
+.revealTier:nth-child(3) { transition-delay: 180ms; }
+.revealTier:nth-child(4) { transition-delay: 270ms; }
+ 
+/* Lists (ul.check, ul.plain): slide in from the left, staggered */
+.revealList li {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.revealed .revealList li {
+  opacity: 1;
+  transform: translateX(0);
+}
+ 
+.revealList li:nth-child(1)  { transition-delay: 80ms; }
+.revealList li:nth-child(2)  { transition-delay: 150ms; }
+.revealList li:nth-child(3)  { transition-delay: 220ms; }
+.revealList li:nth-child(4)  { transition-delay: 290ms; }
+.revealList li:nth-child(5)  { transition-delay: 360ms; }
+.revealList li:nth-child(6)  { transition-delay: 430ms; }
+.revealList li:nth-child(7)  { transition-delay: 500ms; }
+.revealList li:nth-child(8)  { transition-delay: 570ms; }
+.revealList li:nth-child(9)  { transition-delay: 640ms; }
+.revealList li:nth-child(10) { transition-delay: 710ms; }
+ 
+/* Table rows: fade + rise, staggered */
+.revealRow {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+ 
+.revealed .revealRow {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+.revealRow:nth-child(1) { transition-delay: 60ms; }
+.revealRow:nth-child(2) { transition-delay: 140ms; }
+.revealRow:nth-child(3) { transition-delay: 220ms; }
+.revealRow:nth-child(4) { transition-delay: 300ms; }
+ 
+@media (prefers-reduced-motion: reduce) {
+  .revealTier,
+  .revealList li,
+  .revealRow {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
 h1,
 h2,
 h3,

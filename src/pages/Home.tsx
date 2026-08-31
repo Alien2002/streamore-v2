@@ -3,8 +3,45 @@ import Section from '@/components/Section';
 import Button from '@/components/Button';
 import styles from './Home.module.css';
 import HeroSlideshow from '@/components/HeroSlideShow';
+import { useEffect, useState } from 'react';
+import { useScrollReveal } from '@/hooks/useInView';
 
 function Home() {
+  const { ref: promiseRef, inView: promiseInView } = useScrollReveal<HTMLDivElement>();
+  // typing effect...
+  const [displayed, setDisplayed] = useState('');
+  const [done, setDone] = useState(false);
+
+  const text = "Professional multi-camera livestreaming and live production for events that deserve a wider audience. We don't just stream your event — we produce the experience.";
+  const speed = 50; // typing speed in milliseconds
+  const startDelay = 3000; // delay before typing starts in milliseconds
+  const showCursor = true; // whether to show the cursor
+
+
+  useEffect(() => {
+    setDisplayed('');
+    setDone(false);
+
+    let i = 0;
+    let interval: ReturnType<typeof setInterval>;
+
+    const startTimeout = setTimeout(() => {
+      interval = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearInterval(interval);
+    };
+  }, [text, speed, startDelay]);
+
   return (
     <>
       {/* Hero */}
@@ -17,9 +54,13 @@ function Home() {
               Dar es Salaam &middot; Nationwide &middot; East Africa
             </div> */}
             <h1>Beyond<br></br> the room.</h1>
-            <p className={styles.lead}>
-              Professional multi-camera livestreaming and live production for events that deserve a wider audience. We don't just stream your event — we produce the experience.
-            </p>
+            <span className={styles.lead}>
+              {displayed}
+              {showCursor && (
+                <span className={`${styles.cursor} ${done ? styles.cursorBlink : ''}`}>|</span>
+              )}
+
+            </span>
             <div className={styles.buttonGroup}>
               <Button as="a" href="/livestreaming">
                 Request a quote
@@ -40,7 +81,10 @@ function Home() {
 
       {/* What is streamore */}
       <section className={styles.tight}><div className={styles.wrap}>
-        <div className={styles.split}>
+        <div
+          ref={promiseRef}
+          className={`${styles.split} ${promiseInView ? styles.revealed : ''}`}
+        >
           <div>
             <p className={styles.eyebrow}>What Streamore is</p>
             <h2>A broadcast company, not a camera rental.</h2>
@@ -49,10 +93,10 @@ function Home() {
             <div className="btn-row"><a className="btn btn-dark" href="about.html">About Streamore</a></div>
           </div>
           <div>
-            <div className={styles.card}>
+            <div className={styles.card + " " + styles.revealCard}>
               <p className={styles.num}>THE STREAMORE PROMISE</p>
               <p className={styles.quote} >We don't just stream the event. We produce the experience.</p>
-              <ul className={styles.check}>
+              <ul className={styles.check + " " + styles.revealList}>
                 <li>A named broadcast director on every production</li>
                 <li>Venue upload tested and certified before we quote a stream</li>
                 <li>Primary and backup internet paths, plus a local master recording</li>

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Container from './Container';
 import styles from './Hero.module.css';
+import { useTypingEffect } from '@/hooks/useTypingEffect';
 
 interface HeroProps {
   title1: ReactNode;
@@ -11,6 +12,12 @@ interface HeroProps {
 }
 
 function Hero({ title1, title2, subtitle, children, breadcrumb }: HeroProps) {
+  const { text, isTyping } = useTypingEffect(subtitle ? subtitle.toString() : '', {
+    typingSpeed: 50,
+    deletingSpeed: 30,
+    pauseDuration: 1000,
+    loop: false,
+  });
   return (
     <div className={styles.hero}>
       <Container>
@@ -30,7 +37,7 @@ function Hero({ title1, title2, subtitle, children, breadcrumb }: HeroProps) {
         )}
         <h1>{title1} <br></br>{title2}</h1>
         <div className={styles.rule}></div>
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        {subtitle && <p className={styles.subtitle}>{text}<span className={styles.cursor + (!isTyping ? ' ' + styles.cursorBlink : '')}>|</span></p>}
         <p>{children}</p>
       </Container>
     </div>
