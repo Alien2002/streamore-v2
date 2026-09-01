@@ -153,25 +153,13 @@ function Contact() {
             <div className={styles.sidebar}>
               <div className={styles.card}>
                 <p className={styles.eyebrow}>Direct</p>
-                <h3>Talk to a producer</h3>
+                <h3>Talk to us</h3>
                 <ul className={styles.plainList}>
                   <li>
-                    Phone / WhatsApp <span>+255 000 000 000</span>
+                    Phone / WhatsApp <span>+25571 507 1286</span>
                   </li>
                   <li>
-                    Email <span>hello@streamore.co.tz</span>
-                  </li>
-                  <li>
-                    Bookings <span>bookings@streamore.co.tz</span>
-                  </li>
-                  <li>
-                    Partners <span>partners@streamore.co.tz</span>
-                  </li>
-                  <li>
-                    Base <span>Dar es Salaam, Tanzania</span>
-                  </li>
-                  <li>
-                    Response time <span>Same working day</span>
+                    Email <span>streamore@gmail.com</span>
                   </li>
                 </ul>
               </div>

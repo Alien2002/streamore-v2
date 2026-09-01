@@ -36,14 +36,6 @@ function About() {
         </div>
       </div></section>
 
-      <section className={styles.alt}><div className={styles.wrap}>
-        <div className={styles.grid + " "+ styles.g3}>
-          <div className={styles.card}><div className={styles.icon}>V</div><h3>Vision</h3><p>To become one of East Africa's leading live production and digital broadcasting companies — Tanzania first, then the region.</p></div>
-          <div className={styles.card}><div className={styles.icon}>M</div><h3>Mission</h3><p>To help organisations communicate with larger audiences through reliable, creative and professional live production and digital media.</p></div>
-          <div className={styles.card}><div className={styles.icon}>P</div><h3>Purpose</h3><p>To connect events with audiences beyond the room — and to keep the event working long after the room empties.</p></div>
-        </div>
-      </div></section>
-
       <section className={styles.dark}><div className={styles.wrap}>
         <div className={styles.secHead}><p className={styles.eyebrow}>Production philosophy</p><h2>Six beliefs that shape every show</h2><div className={styles.rule}></div></div>
         <div className={styles.grid + " "+ styles.g3}>
@@ -56,39 +48,11 @@ function About() {
         </div>
       </div></section>
 
-      <section><div className={styles.wrap}>
-        <div className={styles.split}>
-          <div>
-            <p className={styles.eyebrow}>Capability</p>
-            <h2>Production capability</h2>
-            <div className={styles.rule}></div>
-            <p className={styles.lead}>Clients care less about model numbers than about whether we can deliver the event properly. For technical teams who do want the detail, our kit supports professional multi-camera production end to end.</p>
-            <ul className={styles.check}>
-              <li><strong>Cameras:</strong> Blackmagic Pocket Cinema 4K and 6K Pro, Sony Alpha and Canon bodies</li>
-              <li><strong>Lenses:</strong> 18–35mm, 24–105mm, 70–200mm f/2.8, 50mm and 85mm primes</li>
-              <li><strong>Production:</strong> ATEM switching systems, Feelworld switcher, OBS, wireless video, dedicated recorders</li>
-              <li><strong>Audio:</strong> RØDECaster Pro II, Shure and DJI microphones, wireless systems and interfaces</li>
-              <li><strong>Lighting:</strong> Godox LED panels, softboxes, RGB fixtures and strobes</li>
-              <li><strong>Connectivity:</strong> multi-carrier mobile uplinks, routers, monitoring and UPS protection</li>
-            </ul>
-          </div>
-          <div id="procurement">
-            <p className={styles.eyebrow}>For procurement teams</p>
-            <h2>Procurement pack</h2>
-            <div className={styles.rule}></div>
-            <p className={styles.lead}>Corporate, donor and government buyers need documents, not just a showreel. Ours are ready on request, as a single pack.</p>
-            <ul className={styles.check}>
-              <li>Company registration and tax identification</li>
-              <li>Company profile and capability statement</li>
-              <li>Equipment schedule and crew CVs</li>
-              <li>Named client references and contactable referees</li>
-              <li>Sample service level agreement and standard contract</li>
-              <li>Insurance position and health &amp; safety statement</li>
-              <li>Rights, consent and data-handling process</li>
-              <li>Standard quotation template and banking details</li>
-            </ul>
-            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="contact.html">Request the pack</a></div>
-          </div>
+      <section className={styles.alt}><div className={styles.wrap}>
+        <div className={styles.grid + " "+ styles.g3}>
+          <div className={styles.card}><div className={styles.icon}>V</div><h3>Vision</h3><p>To become one of East Africa's leading live production and digital broadcasting companies — Tanzania first, then the region.</p></div>
+          <div className={styles.card}><div className={styles.icon}>M</div><h3>Mission</h3><p>To help organisations communicate with larger audiences through reliable, creative and professional live production and digital media.</p></div>
+          <div className={styles.card}><div className={styles.icon}>P</div><h3>Purpose</h3><p>To connect events with audiences beyond the room — and to keep the event working long after the room empties.</p></div>
         </div>
       </div></section>
 

@@ -10,7 +10,7 @@ interface UseTypingEffectOptions {
 export function useTypingEffect(
   texts: string | string[],
   {
-    typingSpeed = 100,
+    typingSpeed = 5000,
     deletingSpeed = 50,
     pauseDuration = 1500,
     loop = true,

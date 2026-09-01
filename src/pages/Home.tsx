@@ -13,7 +13,7 @@ function Home() {
   const [done, setDone] = useState(false);
 
   const text = "Professional multi-camera livestreaming and live production for events that deserve a wider audience. We don't just stream your event — we produce the experience.";
-  const speed = 50; // typing speed in milliseconds
+  const speed = 15; // typing speed in milliseconds
   const startDelay = 3000; // delay before typing starts in milliseconds
   const showCursor = true; // whether to show the cursor
 
@@ -61,6 +61,7 @@ function Home() {
               )}
 
             </span>
+            </div>
             <div className={styles.buttonGroup}>
               <Button as="a" href="/livestreaming">
                 Request a quote
@@ -69,7 +70,7 @@ function Home() {
                 See Packages & rates
               </Button>
             </div>
-          </div>
+          
           <div className={styles.stats}>
             <div className={styles.stat}><b>4K</b><span>Multi-camera production</span></div>
             <div className={styles.stat}><b>2 paths</b><span>Redundant internet, every event</span></div>
@@ -117,13 +118,13 @@ function Home() {
           <div className={styles.rule}></div>
           <p className={styles.lead}>Multi-camera livestreaming is our specialisation. Everything else exists to make the broadcast better, or to extend its life after the room empties.</p>
         </div>
-        <div className={styles.grid + " " + styles.g3}>
-          <div className={styles.card}><div className={styles.icon}>01</div><h3>Multi-camera livestreaming</h3><p>Two to eight cameras, live directing, professional audio, branded graphics and simultaneous delivery to YouTube, Facebook, LinkedIn, your website or a private destination.</p></div>
-          <div className={styles.card}><div className={styles.icon}>02</div><h3>Live event production</h3><p>Camera operation, vision mixing, audio integration, lower thirds, presentation and video playback, screen feeds, programme recording and full technical crew.</p></div>
-          <div className={styles.card}><div className={styles.icon}>03</div><h3>Hybrid event production</h3><p>Physical audience and online audience in one show — remote speakers, moderated Q&amp;A, polls, presentations and a stream that both rooms can follow.</p></div>
-          <div className={styles.card}><div className={styles.icon}>04</div><h3>Corporate broadcasting</h3><p>AGMs, board meetings, town halls, launches, trainings and internal communications delivered securely to the people who need them, on the record.</p></div>
-          <div className={styles.card}><div className={styles.icon}>05</div><h3>Church production</h3><p>Weekly services, conferences, crusades and celebrations — produced on a monthly or annual contract with a consistent look, crew and delivery schedule.</p></div>
-          <div className={styles.card}><div className={styles.icon}>06</div><h3>Content &amp; podcast production</h3><p>One event becomes a master recording, a highlight film, vertical clips, speaker cuts, photographs and social assets. Plus studio and multi-camera podcast production.</p></div>
+        <div className={`${styles.grid} ${styles.g3} ${styles.servicesMasonry}`}>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall}`}><div className={styles.icon}>01</div><h3>Multi-camera livestreaming</h3><p>Two to eight cameras, live directing, professional audio, branded graphics and simultaneous delivery to YouTube, Facebook, LinkedIn, your website or a private destination.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.short}`}><div className={styles.icon}>02</div><h3>Live event production</h3><p>Camera operation, vision mixing, audio integration, lower thirds, presentation and video playback, screen feeds, programme recording and full technical crew.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall}`}><div className={styles.icon}>03</div><h3>Hybrid event production</h3><p>Physical audience and online audience in one show — remote speakers, moderated Q&amp;A, polls, presentations and a stream that both rooms can follow.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>04</div><h3>Corporate broadcasting</h3><p>AGMs, board meetings, town halls, launches, trainings and internal communications delivered securely to the people who need them, on the record.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>05</div><h3>Church production</h3><p>Weekly services, conferences, crusades and celebrations — produced on a monthly or annual contract with a consistent look, crew and delivery schedule.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>06</div><h3>Content &amp; podcast production</h3><p>One event becomes a master recording, a highlight film, vertical clips, speaker cuts, photographs and social assets. Plus studio and multi-camera podcast production.</p></div>
         </div>
         <div className={styles.btnRow} style={{ justifyContent: 'center' }}>
           <a className={styles.btn + " " + styles.btnDark} href="services.html">Explore all services</a>

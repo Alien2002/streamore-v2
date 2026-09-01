@@ -4,19 +4,47 @@
   /* padding-bottom: 1rem; */
   overflow: hidden;
   min-height: 100vh;
+  display: flex;
+  align-items: start; /* keep hero content vertically centered */
 }
 
 .heroContent {
   position: relative;
   z-index: 5;
   max-width: 60vw;
+  opacity: 0;
+  transform: translateX(-80px);
+  animation: heroContentIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 3s;
 }
 
 .heroContent h1 {
   max-width: 20ch;
-  font-size: clamp(2.1rem, 5.2vw, 4rem);
+  font-size: clamp(4rem, 6.5vw, 8rem);
   line-height: 1.14;
   margin: 2rem 0 24px 0;
+}
+
+@keyframes heroContentIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes statsIn {
+  0% {
+    opacity: 0;
+    transform: translateX(90px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .tag {
@@ -48,13 +76,19 @@
   max-width: 56ch;
   line-height: 1.5;
   margin: 1.5rem 0 36px 0;
+  display: -webkit-box; /* clamp long typing text to avoid pushing layout */
+  -webkit-line-clamp: 4; /* show up to 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .buttonGroup {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 26px;
+  /* margin-top: 26px; */
+  bottom: 4rem;
 }
 
 .revealCard {
@@ -96,8 +130,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .revealCard,
-  .revealList li {
+  .revealList li,
+  .heroContent,
+  .hero .stats {
     transition: none;
+    animation: none;
     opacity: 1;
     transform: none;
   }
@@ -220,11 +257,8 @@
   }
 
   .buttonGroup {
-    flex-direction: column;
-  }
-
-  .buttonGroup>* {
-    width: 100%;
+    position: relative;
+    padding-top: 3rem;
   }
 }
 
@@ -238,6 +272,33 @@
   overflow: hidden;
   margin-top: 56px;
   z-index: 5;
+}
+
+/* When stats are inside the hero, keep them anchored so typing doesn't push them down */
+.hero .stats {
+  position: absolute;
+  right: 8rem;
+  bottom: 4rem;
+  margin-top: 0;
+  width: auto;
+  opacity: 0;
+  transform: translateX(90px);
+  animation: statsIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 3.2s;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    align-items: flex-start; /* allow natural flow on small screens */
+  }
+  .hero .stats {
+    display: none;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    margin-top: 4rem;
+  }
 }
 
 .stat {
@@ -306,7 +367,7 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2.1rem, 5.2vw, 4rem)
+  font-size: clamp(6rem, 10vw, 12rem)
 }
 
 h2 {
@@ -686,6 +747,59 @@ section.tight {
   grid-template-columns: repeat(auto-fit, minmax(212px, 1fr))
 }
 
+.serviceCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  padding: 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, rgba(20,24,28,0.82) 0%, rgba(20,24,28,0.6) 35%, rgba(255,255,255,0.95) 100%);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+/* allow using a background image */
+.serviceCard.bgImage {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* subtle lift on hover */
+.serviceCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+}
+
+/* gradient overlay so text is always readable over images */
+.serviceCard::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5) 6%, rgba(0,0,0,0.15) 35%, rgba(255,255,255,0.85) 92%);
+  mix-blend-mode: normal;
+}
+
+/* size variants so you can create the staggered masonry look */
+.serviceCard.tall { min-height: 540px; }
+.serviceCard.medium { min-height: 380px; }
+.serviceCard.short { min-height: 260px; }
+
+/* keep content above overlay */
+.serviceCard > * { position: relative; z-index: 2; }
+
+/* title / subtitle styles */
+.serviceCard h3 { color: #fff; margin-top: 8px; margin-bottom: 6px; }
+.serviceCard p { color: rgba(255,255,255,0.88); margin: 0; }
+.serviceCard .icon { background: rgba(255,255,255,0.06); color: #fff; }
+
 .card {
   background: #fff;
   border: 1px solid var(--line);
@@ -778,6 +892,56 @@ ul.check li {
 .deep ul.check li {
   color: #C0CBDD
 }
+
+/* Services: alternate card style (keeps .card elsewhere) */
+.servicesMasonry {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  grid-auto-rows: 12px; /* base row height for row spanning */
+}
+
+.serviceCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  padding: 28px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(20,24,28,0.88) 0%, rgba(20,24,28,0.6) 35%, rgba(255,255,255,0.95) 100%);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+  transition: transform .28s ease, box-shadow .28s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* optional image support */
+.serviceCard.bgImage {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.serviceCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5) 6%, rgba(0,0,0,0.15) 35%, rgba(255,255,255,0.9) 92%);
+}
+
+.serviceCard > * { position: relative; z-index: 2; }
+
+.serviceCard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(15,23,42,0.12); }
+
+/* size variants (adjust spans to control visual height) */
+.servicesMasonry > .tall   { grid-row: span 15; }
+.servicesMasonry > .medium { grid-row: span 12; }
+.servicesMasonry > .short  { grid-row: span 10; }
+
+.serviceCard h3 { color: #fff; margin-top: 8px; margin-bottom: 6px; }
+.serviceCard p { color: rgba(255,255,255,0.9); margin: 0; }
+.serviceCard .icon { background: rgba(255,255,255,0.06); color: #fff; }
 
 ul.check li::before {
   content: "";

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface UseScrollRevealOptions extends IntersectionObserverInit {
-  /** Only reveal when the element enters the viewport while scrolling down. Default: true. */
+  /** Only reveal when the element enters the viewport while scrolling down. Default: false. */
   onlyOnScrollDown?: boolean;
 }
 
@@ -17,7 +17,8 @@ interface UseScrollRevealOptions extends IntersectionObserverInit {
 export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
   options: UseScrollRevealOptions = {}
 ) {
-  const { onlyOnScrollDown = true, threshold = 0.2, ...rest } = options;
+  // Default to allowing reveal on both scroll directions for expected UX.
+  const { onlyOnScrollDown = false, threshold = 0.2, ...rest } = options;
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
 

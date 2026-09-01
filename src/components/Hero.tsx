@@ -13,7 +13,7 @@ interface HeroProps {
 
 function Hero({ title1, title2, subtitle, children, breadcrumb }: HeroProps) {
   const { text, isTyping } = useTypingEffect(subtitle ? subtitle.toString() : '', {
-    typingSpeed: 50,
+    typingSpeed: 10,
     deletingSpeed: 30,
     pauseDuration: 1000,
     loop: false,
