@@ -8,6 +8,8 @@ import { useScrollReveal } from '@/hooks/useInView';
 
 function Home() {
   const { ref: promiseRef, inView: promiseInView } = useScrollReveal<HTMLDivElement>();
+  const { ref: servicesRef, inView: servicesInView } = useScrollReveal<HTMLDivElement>();
+  const { ref: workflowRef, inView: workflowInView } = useScrollReveal<HTMLDivElement>();
   // typing effect...
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
@@ -16,7 +18,15 @@ function Home() {
   const speed = 15; // typing speed in milliseconds
   const startDelay = 3000; // delay before typing starts in milliseconds
   const showCursor = true; // whether to show the cursor
-
+  const particles = Array.from({ length: 22 }, (_, index) => ({
+    id: index,
+    left: `${(index * 11.5) % 100}%`,
+    top: `${(index * 17.2 + 8) % 100}%`,
+    size: 2 + (index % 5),
+    duration: 8 + (index % 6),
+    delay: (index % 7) * 0.9,
+    opacity: 0.18 + (index % 4) * 0.12,
+  }));
 
   useEffect(() => {
     setDisplayed('');
@@ -86,7 +96,7 @@ function Home() {
           ref={promiseRef}
           className={`${styles.split} ${promiseInView ? styles.revealed : ''}`}
         >
-          <div>
+          <div className={styles.revealCard}>
             <p className={styles.eyebrow}>What Streamore is</p>
             <h2>A broadcast company, not a camera rental.</h2>
             <p className={styles.lead}>Streamore is a Tanzanian media and production company specialising in professional multi-camera livestreaming, hybrid event production and digital content production. We help churches, corporates, NGOs, government institutions, brands and event organisers connect a physical event with the audience that could not be in the room.</p>
@@ -118,13 +128,16 @@ function Home() {
           <div className={styles.rule}></div>
           <p className={styles.lead}>Multi-camera livestreaming is our specialisation. Everything else exists to make the broadcast better, or to extend its life after the room empties.</p>
         </div>
-        <div className={`${styles.grid} ${styles.g3} ${styles.servicesMasonry}`}>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall}`}><div className={styles.icon}>01</div><h3>Multi-camera livestreaming</h3><p>Two to eight cameras, live directing, professional audio, branded graphics and simultaneous delivery to YouTube, Facebook, LinkedIn, your website or a private destination.</p></div>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.short}`}><div className={styles.icon}>02</div><h3>Live event production</h3><p>Camera operation, vision mixing, audio integration, lower thirds, presentation and video playback, screen feeds, programme recording and full technical crew.</p></div>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall}`}><div className={styles.icon}>03</div><h3>Hybrid event production</h3><p>Physical audience and online audience in one show — remote speakers, moderated Q&amp;A, polls, presentations and a stream that both rooms can follow.</p></div>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>04</div><h3>Corporate broadcasting</h3><p>AGMs, board meetings, town halls, launches, trainings and internal communications delivered securely to the people who need them, on the record.</p></div>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>05</div><h3>Church production</h3><p>Weekly services, conferences, crusades and celebrations — produced on a monthly or annual contract with a consistent look, crew and delivery schedule.</p></div>
-          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium}`}><div className={styles.icon}>06</div><h3>Content &amp; podcast production</h3><p>One event becomes a master recording, a highlight film, vertical clips, speaker cuts, photographs and social assets. Plus studio and multi-camera podcast production.</p></div>
+        <div
+          ref={servicesRef}
+          className={`${styles.grid} ${styles.g3} ${styles.servicesMasonry} ${servicesInView ? styles.revealed : ''}`}
+        >
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('multi_camera.jpg')" }}><div className={styles.icon}>01</div><h3>Multi-camera livestreaming</h3><p>Two to eight cameras, live directing, professional audio, branded graphics and simultaneous delivery to YouTube, Facebook, LinkedIn, your website or a private destination.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.short} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('live_event.JPG')" }}><div className={styles.icon}>02</div><h3>Live event production</h3><p>Camera operation, vision mixing, audio integration, lower thirds, presentation and video playback, screen feeds, programme recording and full technical crew.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.tall} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('hybrid_event.jpg')" }}><div className={styles.icon}>03</div><h3>Hybrid event production</h3><p>Physical audience and online audience in one show — remote speakers, moderated Q&amp;A, polls, presentations and a stream that both rooms can follow.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('coporate.jpg')" }}><div className={styles.icon}>04</div><h3>Corporate broadcasting</h3><p>AGMs, board meetings, town halls, launches, trainings and internal communications delivered securely to the people who need them, on the record.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('church.jpg')" }}><div className={styles.icon}>05</div><h3>Church production</h3><p>Weekly services, conferences, crusades and celebrations — produced on a monthly or annual contract with a consistent look, crew and delivery schedule.</p></div>
+          <div className={`${styles.card} ${styles.serviceCard} ${styles.medium} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('podcast.JPG')" }}><div className={styles.icon}>06</div><h3>Content &amp; podcast production</h3><p>One event becomes a master recording, a highlight film, vertical clips, speaker cuts, photographs and social assets. Plus studio and multi-camera podcast production.</p></div>
         </div>
         <div className={styles.btnRow} style={{ justifyContent: 'center' }}>
           <a className={styles.btn + " " + styles.btnDark} href="services.html">Explore all services</a>
@@ -156,7 +169,7 @@ function Home() {
           <div className={styles.rule}></div>
           <p className={styles.lead}>The same process runs on a single-room webinar and on a multi-room national conference. Only the scale changes.</p>
         </div>
-        <div className={styles.steps}>
+        <div ref={workflowRef} className={`${styles.steps} ${workflowInView ? styles.revealed : ''}`}>
           <div className={styles.step}><div><h3>Discover</h3><p>Objective, audience, venue, platforms, languages, remote speakers, production requirements and budget.</p></div></div>
           <div className={styles.step}><div><h3>Plan</h3><p>Camera plan, audio plan, network plan, crew plan, graphics plan and backup plan — issued to you in writing.</p></div></div>
           <div className={styles.step}><div><h3>Certify the venue</h3><p>Site survey, sustained upload test, power and cable routes, camera positions. A stream is only quoted once the venue passes.</p></div></div>
@@ -168,28 +181,49 @@ function Home() {
         </div>
       </div></section>
 
-      <section className={styles.alt}><div className={styles.wrap}>
-        <div className={styles.secHead + " " + styles.center}>
-          <p className={styles.eyebrow}>Who we serve</p>
-          <h2>Built for events that carry weight</h2>
-          <div className={styles.rule}></div>
+      <section className={styles.deep}>
+        <div className={styles.particlesSection}>
+          <div className={styles.particleLayer} aria-hidden="true">
+            {particles.map((particle) => (
+              <span
+                key={particle.id}
+                className={styles.particle}
+                style={{
+                  left: particle.left,
+                  top: particle.top,
+                  width: particle.size,
+                  height: particle.size,
+                  opacity: particle.opacity,
+                  animationDuration: `${particle.duration}s`,
+                  animationDelay: `${particle.delay}s`,
+                }}
+              />
+            ))}
+          </div>
+          <div className={styles.wrap}>
+            <div className={styles.secHead + " " + styles.center}>
+              <p className={styles.eyebrow}>Who we serve</p>
+              <h2>Built for events that carry weight</h2>
+              <div className={styles.rule}></div>
+            </div>
+            <div className={styles.grid + " " + styles.g4}>
+              <div className={styles.card}><h3>Churches</h3><p>Reach your congregation wherever they are, every week.</p></div>
+              <div className={styles.card}><h3>Corporates</h3><p>Broadcast AGMs, launches and town halls professionally.</p></div>
+              <div className={styles.card}><h3>NGOs</h3><p>Extend the reach of programmes, forums and reviews.</p></div>
+              <div className={styles.card}><h3>Government</h3><p>Deliver national events to a wider public audience.</p></div>
+              <div className={styles.card}><h3>Event organisers</h3><p>Add a broadcast layer without losing control of your show.</p></div>
+              <div className={styles.card}><h3>Brands</h3><p>Turn launches and activations into digital experiences.</p></div>
+              <div className={styles.card}><h3>Educators</h3><p>Broadcast seminars, masterclasses and training.</p></div>
+              <div className={styles.card}><h3>Media</h3><p>Production support for live programming and remote feeds.</p></div>
+            </div>
+            <div className={styles.btnRow} style={{ justifyContent: "center" }}>
+              <a className={styles.btn + " " + styles.btnDark} href="industries.html">See how we work per sector</a>
+            </div>
+          </div>
         </div>
-        <div className={styles.grid + " " + styles.g4}>
-          <div className={styles.card}><h3>Churches</h3><p>Reach your congregation wherever they are, every week.</p></div>
-          <div className={styles.card}><h3>Corporates</h3><p>Broadcast AGMs, launches and town halls professionally.</p></div>
-          <div className={styles.card}><h3>NGOs</h3><p>Extend the reach of programmes, forums and reviews.</p></div>
-          <div className={styles.card}><h3>Government</h3><p>Deliver national events to a wider public audience.</p></div>
-          <div className={styles.card}><h3>Event organisers</h3><p>Add a broadcast layer without losing control of your show.</p></div>
-          <div className={styles.card}><h3>Brands</h3><p>Turn launches and activations into digital experiences.</p></div>
-          <div className={styles.card}><h3>Educators</h3><p>Broadcast seminars, masterclasses and training.</p></div>
-          <div className={styles.card}><h3>Media</h3><p>Production support for live programming and remote feeds.</p></div>
-        </div>
-        <div className={styles.btnRow} style={{ justifyContent: "center" }}>
-          <a className={styles.btn + " " + styles.btnDark} href="industries.html">See how we work per sector</a>
-        </div>
-      </div></section>
+      </section>
 
-      <section className={styles.deep}><div className={styles.wrap}>
+      {/* <section className={styles.deep}><div className={styles.wrap}>
         <div className={styles.split}>
           <div>
             <p className={styles.eyebrow}>Transparent pricing</p>
@@ -216,7 +250,7 @@ function Home() {
             <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnGhost} href="contact.html">Discuss a contract</a></div>
           </div>
         </div>
-      </div></section>
+      </div></section> */}
 
       <section><div className={styles.wrap}>
         <div className={styles.callout}>
