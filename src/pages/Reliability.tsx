@@ -1,6 +1,16 @@
 import Hero from '@/components/Hero';
 import styles from './Reliability.module.css';
 
+const particles = Array.from({ length: 22 }, (_, index) => ({
+  id: index,
+  left: `${(index * 11.5) % 100}%`,
+  top: `${(index * 17.2 + 8) % 100}%`,
+  size: 2 + (index % 5),
+  duration: 8 + (index % 6),
+  delay: (index % 7) * 0.9,
+  opacity: 0.18 + (index % 4) * 0.12,
+}));
+
 function Reliability() {
   return (
     <>
@@ -40,7 +50,23 @@ function Reliability() {
         </table></div>
       </div></section>
 
-      <section className={styles.dark}><div className={styles.wrap}>
+      <section className={styles.dark + ' ' + styles.particlesSection}><div className={styles.particleLayer} aria-hidden="true">
+        {particles.map((particle) => (
+          <span
+            key={particle.id}
+            className={styles.particle}
+            style={{
+              left: particle.left,
+              top: particle.top,
+              width: particle.size,
+              height: particle.size,
+              opacity: particle.opacity,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
+            }}
+          />
+        ))}
+      </div><div className={styles.wrap}>
         <div className={styles.split}>
           <div>
             <p className={styles.eyebrow}>Step three</p>

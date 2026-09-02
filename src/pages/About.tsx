@@ -1,6 +1,16 @@
 import Hero from '@/components/Hero';
 import styles from './About.module.css';
 
+const particles = Array.from({ length: 22 }, (_, index) => ({
+  id: index,
+  left: `${(index * 11.5) % 100}%`,
+  top: `${(index * 17.2 + 8) % 100}%`,
+  size: 2 + (index % 5),
+  duration: 8 + (index % 6),
+  delay: (index % 7) * 0.9,
+  opacity: 0.18 + (index % 4) * 0.12,
+}));
+
 function About() {
   return (
     <>
@@ -36,7 +46,23 @@ function About() {
         </div>
       </div></section>
 
-      <section className={styles.dark}><div className={styles.wrap}>
+      <section className={styles.dark + ' ' + styles.particlesSection}><div className={styles.particleLayer} aria-hidden="true">
+        {particles.map((particle) => (
+          <span
+            key={particle.id}
+            className={styles.particle}
+            style={{
+              left: particle.left,
+              top: particle.top,
+              width: particle.size,
+              height: particle.size,
+              opacity: particle.opacity,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
+            }}
+          />
+        ))}
+      </div><div className={styles.wrap}>
         <div className={styles.secHead}><p className={styles.eyebrow}>Production philosophy</p><h2>Six beliefs that shape every show</h2><div className={styles.rule}></div></div>
         <div className={styles.grid + " "+ styles.g3}>
           <div className={styles.card}><h3>Reliability</h3><p>A livestream should not depend on luck. It should depend on testing, duplication and procedure.</p></div>
