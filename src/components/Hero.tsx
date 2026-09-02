@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import Container from './Container';
 import styles from './Hero.module.css';
 import { useTypingEffect } from '@/hooks/useTypingEffect';
+import HeroSlideshow from './HeroSlideShow';
 
 interface HeroProps {
   title1: ReactNode;

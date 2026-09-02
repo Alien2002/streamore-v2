@@ -26,10 +26,9 @@ function Services() {
 
       <section><div className={styles.wrap}>
         <div
-          // ref={promiseRef}
-          className={`${styles.grid} ${styles.g2} ${revealed ? styles.revealed : ''}`}
+          className={`${styles.grid} ${styles.servicesMasonry} ${revealed ? styles.revealed : ''}`}
         >
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
             <p className={styles.num}>01</p>
             <h3>Multi-camera livestreaming</h3>
             <p style={{ marginBottom: "16px" }}>Our specialisation. Two to eight cameras, live directing, professional audio, graphics and simultaneous delivery to public or private destinations.</p>
@@ -41,7 +40,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
             <p className={styles.num}>02</p>
             <h3>Live event production</h3>
             <p style={{ marginBottom: "16px" }}>The technical production behind the broadcast — and behind the screens in the room.</p>
@@ -53,7 +52,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
             <p className={styles.num}>03</p>
             <h3>Hybrid event production</h3>
             <p style={{ marginBottom: "16px" }}>One show, two audiences. The people in the room and the people online both get a complete experience.</p>
@@ -65,7 +64,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
             <p className={styles.num}>04</p>
             <h3>Corporate broadcasting</h3>
             <p style={{ marginBottom: "16px" }}>For companies, banks, NGOs, associations and institutions where the message carries weight.</p>
@@ -77,7 +76,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.short}`}>
             <p className={styles.num}>05</p>
             <h3>Church production</h3>
             <p style={{ marginBottom: "16px" }}>Weekly production, not one-off streaming — delivered on contract with a consistent look and crew.</p>
@@ -89,7 +88,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
             <p className={styles.num}>06</p>
             <h3>Event broadcasting</h3>
             <p style={{ marginBottom: "16px" }}>Larger events with multiple rooms, stages, feeds and stakeholders.</p>
@@ -101,7 +100,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
             <p className={styles.num}>07</p>
             <h3>Video production</h3>
             <p style={{ marginBottom: "16px" }}>Supporting service. Corporate and event films that share the same look as your broadcast.</p>
@@ -113,7 +112,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.short}`}>
             <p className={styles.num}>08</p>
             <h3>Photography</h3>
             <p style={{ marginBottom: "16px" }}>Supporting service. Stills captured alongside the broadcast, delivered to the same deadline.</p>
@@ -125,7 +124,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
             <p className={styles.num}>09</p>
             <h3>Podcast production</h3>
             <p style={{ marginBottom: "16px" }}>Studio and on-location podcast production, built as a multi-camera show rather than a microphone in a room.</p>
@@ -137,7 +136,7 @@ function Services() {
             </ul>
           </div>
 
-          <div className={`${styles.card} ${styles.revealCard}`}>
+          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
             <p className={styles.num}>10</p>
             <h3>Content production</h3>
             <p style={{ marginBottom: "16px" }}>The reason a Streamore production keeps paying after the event.</p>
