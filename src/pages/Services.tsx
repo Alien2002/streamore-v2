@@ -219,6 +219,7 @@ function Services() {
       <Hero
         title1="One specialisation."
         title2="A full production chain."
+        bgImage="services.jpg"
         subtitle="Multi-camera livestreaming is the centre of everything we do. Every other service exists to strengthen the broadcast or extend its value once the room empties."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />

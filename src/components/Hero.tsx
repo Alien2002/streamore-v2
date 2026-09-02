@@ -9,9 +9,10 @@ interface HeroProps {
   subtitle?: ReactNode;
   children?: ReactNode;
   breadcrumb?: { label: string; href?: string }[];
+  bgImage?: string;
 }
 
-function Hero({ title1, title2, subtitle, children, breadcrumb }: HeroProps) {
+function Hero({ title1, title2, subtitle, children, breadcrumb, bgImage }: HeroProps) {
   const { text, isTyping } = useTypingEffect(subtitle ? subtitle.toString() : '', {
     typingSpeed: 10,
     deletingSpeed: 30,
@@ -19,7 +20,14 @@ function Hero({ title1, title2, subtitle, children, breadcrumb }: HeroProps) {
     loop: false,
   });
   return (
-    <div className={styles.hero}>
+    <div className={styles.hero} 
+    style={{
+        backgroundImage: `linear-gradient(180deg, rgba(12,18,28,0.74), rgba(12,18,28,0.34)), url('/${bgImage}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <Container>
         {breadcrumb && (
           <div className={styles.breadcrumb}>

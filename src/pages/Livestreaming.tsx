@@ -17,6 +17,7 @@ function Livestreaming() {
       <Hero
         title1="Professional Livestreaming."
         title2="Built for real events."
+        bgImage="live_stream.JPG"
         subtitle="Multi-camera production, professional audio, live directing, branded graphics, multi-platform broadcasting, redundant connectivity and a recorded master — the full chain, run by one accountable team."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Livestreaming' }]}
       />

@@ -19,6 +19,7 @@ function Contact() {
       <Hero
         title1="Tell us about"
         title2="your event."
+        bgImage="contact.jpg"
         subtitle="Send the date, venue, expected audience and platforms. You will receive a written production plan and a firm quotation — and if the venue needs a connectivity test first, we will book the survey."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />

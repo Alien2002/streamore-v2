@@ -17,6 +17,7 @@ function About() {
       <Hero
         title1="We produce broadcasts,"
         title2="not recordings."
+        bgImage="broadcast.jpg"
         subtitle="Streamore is a Tanzanian media and production company specialising in professional multi-camera livestreaming and live event production, based in Dar es Salaam and working nationwide."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />

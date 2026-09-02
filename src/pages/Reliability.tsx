@@ -17,6 +17,7 @@ function Reliability() {
       <Hero
         title1="How We Protect"
         title2="Your Broadcast."
+        bgImage="reliability.jpg"
         subtitle="Every supplier says they are reliable. This page is what reliability actually looks like when it is written down — the tests, the duplicates, the procedures and the commitments."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Reliability' }]}
       />

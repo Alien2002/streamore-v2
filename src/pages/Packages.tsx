@@ -21,6 +21,7 @@ function Packages() {
       <Hero
         title1="Published packages."
         title2="No hidden scope."
+        bgImage="packages.jpg"
         subtitle="Indicative rates for a Dar es Salaam event, one event day, normal venue access. Every quotation is confirmed after a site survey — but you should never have to guess the order of magnitude before you call."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Packages' }]}
       />

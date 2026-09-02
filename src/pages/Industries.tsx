@@ -18,6 +18,7 @@ function Industries() {
       <Hero
         title1="Different rooms."
         title2="Different risks."
+        bgImage="industries.JPG"
         subtitle="A weekly church service and a national conference need the same engineering discipline but a completely different production design. Here is how we approach each."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Industries' }]}
       />

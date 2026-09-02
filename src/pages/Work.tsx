@@ -7,6 +7,7 @@ function Work() {
       <Hero
         title1="The work, and"
         title2="the evidence behind it."
+        bgImage="work.JPG"
         subtitle="Every Streamore case study shows the same six things: the objective, the venue, the production design, the connectivity plan, the audience result and the deliverables. Showreels are easy; evidence is what corporate buyers actually compare."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Work' }]}
       />
