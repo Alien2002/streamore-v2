@@ -129,6 +129,15 @@ const cardsData = [
 ];
 
 const COLUMN_COUNT = 3;
+const particles = Array.from({ length: 22 }, (_, index) => ({
+  id: index,
+  left: `${(index * 11.5) % 100}%`,
+  top: `${(index * 17.2 + 8) % 100}%`,
+  size: 2 + (index % 5),
+  duration: 8 + (index % 6),
+  delay: (index % 7) * 0.9,
+  opacity: 0.18 + (index % 4) * 0.12,
+}));
 
 // Round-robin the cards into columns so each column gets a mix of
 // short/long cards rather than one column being all "tall" cards.
@@ -241,7 +250,24 @@ function Services() {
         </div>
       </section>
 
-      <section className={styles.deep}>
+      <section className={styles.deep + ' ' + styles.particlesSection}>
+        <div className={styles.particleLayer} aria-hidden="true">
+          {particles.map((particle) => (
+            <span
+              key={particle.id}
+              className={styles.particle}
+              style={{
+                left: particle.left,
+                top: particle.top,
+                width: particle.size,
+                height: particle.size,
+                opacity: particle.opacity,
+                animationDuration: `${particle.duration}s`,
+                animationDelay: `${particle.delay}s`,
+              }}
+            />
+          ))}
+        </div>
         <div className={styles.wrap}>
           <div className={styles.secHead + ' ' + styles.center}>
             <p className={styles.eyebrow}>Content multiplication</p>
