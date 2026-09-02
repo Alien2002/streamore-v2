@@ -1,20 +1,210 @@
 import Hero from '@/components/Hero';
 import styles from './services.module.css';
-import { useEffect, useState } from 'react';
-// import { useScrollReveal } from '@/hooks/useInView';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
+// ---- Service card data ------------------------------------------------
+// Pulled out of JSX so we can freely split it across marquee columns.
+const cardsData = [
+  {
+    num: '01',
+    title: 'Multi-camera livestreaming',
+    image: 'multi_camera.jpg',
+    desc: 'Our specialisation. Two to eight cameras, live directing, professional audio, graphics and simultaneous delivery to public or private destinations.',
+    items: [
+      'Churches, conferences and corporate events',
+      'Concerts, ceremonies and weddings',
+      'Government and institutional events',
+      'Multi-platform and private distribution',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Live event production',
+    image: 'live_event.JPG',
+    desc: 'The technical production behind the broadcast — and behind the screens in the room.',
+    items: [
+      'Camera operation and vision mixing',
+      'Audio integration with the venue console',
+      'Live graphics, lower thirds and playback',
+      'Screen feeds and programme recording',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Hybrid event production',
+    image: 'hybrid_event.jpg',
+    desc: 'One show, two audiences. The people in the room and the people online both get a complete experience.',
+    items: [
+      'Remote speakers and panellists',
+      'Moderated Q&A, polls and chat management',
+      'Presentation and screen management',
+      'Recording and replay for both audiences',
+    ],
+  },
+  {
+    num: '04',
+    title: 'Corporate broadcasting',
+    image: 'coporate.jpg',
+    desc: 'For companies, banks, NGOs, associations and institutions where the message carries weight.',
+    items: [
+      'AGMs, board meetings and town halls',
+      'Product launches and press conferences',
+      'Training and internal communications',
+      'Secure, private and access-controlled delivery',
+    ],
+  },
+  {
+    num: '05',
+    title: 'Church production',
+    image: 'church.jpg',
+    desc: 'Weekly production, not one-off streaming — delivered on contract with a consistent look and crew.',
+    items: [
+      'Sunday services and worship nights',
+      'Conferences, crusades and celebrations',
+      'Weddings, funerals and special services',
+      'Volunteer team training and system design',
+    ],
+  },
+  {
+    num: '06',
+    title: 'Event broadcasting',
+    image: 'event_broadcast.JPG',
+    desc: 'Larger events with multiple rooms, stages, feeds and stakeholders.',
+    items: [
+      'Multi-camera crew with a show caller',
+      'Venue and stage integration',
+      'Redundant power and connectivity',
+      'Technical coordination with your producers',
+    ],
+  },
+  {
+    num: '07',
+    title: 'Video production',
+    image: 'video_production.JPG',
+    desc: 'Supporting service. Corporate and event films that share the same look as your broadcast.',
+    items: [
+      'Corporate and brand films',
+      'Event highlight and recap videos',
+      'Interviews and documentaries',
+      'Social media cutdowns and commercials',
+    ],
+  },
+  {
+    num: '08',
+    title: 'Photography',
+    image: 'photography.jpg',
+    desc: 'Supporting service. Stills captured alongside the broadcast, delivered to the same deadline.',
+    items: [
+      'Corporate and conference photography',
+      'Event and stage coverage',
+      'Portraits and speaker headshots',
+      'Product and brand photography',
+    ],
+  },
+  {
+    num: '09',
+    title: 'Podcast production',
+    image: 'podcast.JPG',
+    desc: 'Studio and on-location podcast production, built as a multi-camera show rather than a microphone in a room.',
+    items: [
+      'Multi-camera studio recording',
+      'Broadcast-grade audio capture',
+      'Editing, reels and episode packaging',
+      'Publishing and distribution support',
+    ],
+  },
+  {
+    num: '10',
+    title: 'Content production',
+    image: 'content.JPG',
+    desc: 'The reason a Streamore production keeps paying after the event.',
+    items: [
+      'Master recording and clean replay',
+      'Highlight film and speaker cuts',
+      '5–20 vertical clips for social',
+      'Photographs, thumbnails and a performance report',
+    ],
+  },
+];
+
+const COLUMN_COUNT = 3;
+
+// Round-robin the cards into columns so each column gets a mix of
+// short/long cards rather than one column being all "tall" cards.
+const columns = Array.from({ length: COLUMN_COUNT }, (_, colIndex) =>
+  cardsData.filter((_, i) => i % COLUMN_COUNT === colIndex)
+);
+
+function ServiceCard({ card }: { card: typeof cardsData[number] }) {
+  return (
+    <div
+      className={styles.card + ' ' + styles.bgImage}
+      style={{
+        backgroundImage: `linear-gradient(180deg, rgba(12,18,28,0.74), rgba(12,18,28,0.34)), url('/${card.image}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <h3>{card.title}</h3>
+      <p style={{ marginBottom: '16px', color: 'rgba(255,255,255,0.9)', marginTop: '1rem' }}>{card.desc}</p>
+      <ul className={styles.check}>
+        {card.items.map((item) => (
+          <li key={item} style={{ color: 'rgba(255,255,255,0.9)' }}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 function Services() {
-  // const { ref: promiseRef, inView: promiseInView } = useScrollReveal<HTMLDivElement>();
-  const [revealed, setRevealed] = useState(false);
+  const colRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tweensRef = useRef<gsap.core.Tween[]>([]);
 
   useEffect(() => {
-    // Wait a frame so the browser paints the hidden state first,
-    // then flip to revealed — this is what triggers the CSS transition.
-    const raf = requestAnimationFrame(() => {
-      requestAnimationFrame(() => setRevealed(true));
+    const ctx = gsap.context(() => {
+      colRefs.current.forEach((col, i) => {
+        if (!col) return;
+
+        // Each column renders its card list TWICE back to back (see the
+        // render below). That means half of the column's scrollHeight is
+        // exactly one full loop — animating y from 0 to -halfHeight (or
+        // the reverse) and repeating is therefore a seamless loop: the
+        // instant the tween resets, the duplicated content is sitting in
+        // the exact same visual position as the start.
+        const halfHeight = col.scrollHeight / 2;
+
+        // Even columns drift upward, odd columns drift downward.
+        const goingUp = i % 2 === 0;
+
+        // Vary speed slightly per column so they don't all move in lockstep.
+        const duration = 26 + i * 7;
+
+        const tween = gsap.fromTo(
+          col,
+          { y: goingUp ? 0 : -halfHeight },
+          {
+            y: goingUp ? -halfHeight : 0,
+            duration,
+            ease: 'none',
+            repeat: -1,
+          }
+        );
+
+        tweensRef.current[i] = tween;
+      });
     });
-    return () => cancelAnimationFrame(raf);
+
+    return () => ctx.revert();
   }, []);
+
+  // Pause the whole marquee on hover — comment this handler pair out
+  // (and remove onMouseEnter/onMouseLeave below) if you'd rather it
+  // keep scrolling under the cursor.
+  const pauseAll = () => tweensRef.current.forEach((t) => t?.pause());
+  const resumeAll = () => tweensRef.current.forEach((t) => t?.resume());
+
   return (
     <>
       <Hero
@@ -24,148 +214,87 @@ function Services() {
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />
 
-      <section><div className={styles.wrap}>
-        <div
-          className={`${styles.grid} ${styles.servicesMasonry} ${revealed ? styles.revealed : ''}`}
-        >
-          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
-            <p className={styles.num}>01</p>
-            <h3>Multi-camera livestreaming</h3>
-            <p style={{ marginBottom: "16px" }}>Our specialisation. Two to eight cameras, live directing, professional audio, graphics and simultaneous delivery to public or private destinations.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Churches, conferences and corporate events</li>
-              <li>Concerts, ceremonies and weddings</li>
-              <li>Government and institutional events</li>
-              <li>Multi-platform and private distribution</li>
-            </ul>
-          </div>
+      <section>
+        <div className={styles.wrap}>
+          <div
+            className={styles.marqueeViewport}
+            onMouseEnter={pauseAll}
+            onMouseLeave={resumeAll}
+          >
+            <div className={`${styles.fadeOverlay} ${styles.fadeTop}`} />
 
-          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
-            <p className={styles.num}>02</p>
-            <h3>Live event production</h3>
-            <p style={{ marginBottom: "16px" }}>The technical production behind the broadcast — and behind the screens in the room.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Camera operation and vision mixing</li>
-              <li>Audio integration with the venue console</li>
-              <li>Live graphics, lower thirds and playback</li>
-              <li>Screen feeds and programme recording</li>
-            </ul>
-          </div>
+            {columns.map((col, colIndex) => (
+              <div
+                key={colIndex}
+                className={styles.marqueeCol}
+                ref={(el) => (colRefs.current[colIndex] = el)}
+              >
+                {/* Render the column's cards twice for the seamless loop */}
+                {[...col, ...col].map((card, i) => (
+                  <ServiceCard key={`${colIndex}-${card.num}-${i}`} card={card} />
+                ))}
+              </div>
+            ))}
 
-          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
-            <p className={styles.num}>03</p>
-            <h3>Hybrid event production</h3>
-            <p style={{ marginBottom: "16px" }}>One show, two audiences. The people in the room and the people online both get a complete experience.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Remote speakers and panellists</li>
-              <li>Moderated Q&amp;A, polls and chat management</li>
-              <li>Presentation and screen management</li>
-              <li>Recording and replay for both audiences</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
-            <p className={styles.num}>04</p>
-            <h3>Corporate broadcasting</h3>
-            <p style={{ marginBottom: "16px" }}>For companies, banks, NGOs, associations and institutions where the message carries weight.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>AGMs, board meetings and town halls</li>
-              <li>Product launches and press conferences</li>
-              <li>Training and internal communications</li>
-              <li>Secure, private and access-controlled delivery</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.short}`}>
-            <p className={styles.num}>05</p>
-            <h3>Church production</h3>
-            <p style={{ marginBottom: "16px" }}>Weekly production, not one-off streaming — delivered on contract with a consistent look and crew.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Sunday services and worship nights</li>
-              <li>Conferences, crusades and celebrations</li>
-              <li>Weddings, funerals and special services</li>
-              <li>Volunteer team training and system design</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
-            <p className={styles.num}>06</p>
-            <h3>Event broadcasting</h3>
-            <p style={{ marginBottom: "16px" }}>Larger events with multiple rooms, stages, feeds and stakeholders.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Multi-camera crew with a show caller</li>
-              <li>Venue and stage integration</li>
-              <li>Redundant power and connectivity</li>
-              <li>Technical coordination with your producers</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
-            <p className={styles.num}>07</p>
-            <h3>Video production</h3>
-            <p style={{ marginBottom: "16px" }}>Supporting service. Corporate and event films that share the same look as your broadcast.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Corporate and brand films</li>
-              <li>Event highlight and recap videos</li>
-              <li>Interviews and documentaries</li>
-              <li>Social media cutdowns and commercials</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.short}`}>
-            <p className={styles.num}>08</p>
-            <h3>Photography</h3>
-            <p style={{ marginBottom: "16px" }}>Supporting service. Stills captured alongside the broadcast, delivered to the same deadline.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Corporate and conference photography</li>
-              <li>Event and stage coverage</li>
-              <li>Portraits and speaker headshots</li>
-              <li>Product and brand photography</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.medium}`}>
-            <p className={styles.num}>09</p>
-            <h3>Podcast production</h3>
-            <p style={{ marginBottom: "16px" }}>Studio and on-location podcast production, built as a multi-camera show rather than a microphone in a room.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Multi-camera studio recording</li>
-              <li>Broadcast-grade audio capture</li>
-              <li>Editing, reels and episode packaging</li>
-              <li>Publishing and distribution support</li>
-            </ul>
-          </div>
-
-          <div className={`${styles.card} ${styles.revealCard} ${styles.tall}`}>
-            <p className={styles.num}>10</p>
-            <h3>Content production</h3>
-            <p style={{ marginBottom: "16px" }}>The reason a Streamore production keeps paying after the event.</p>
-            <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>Master recording and clean replay</li>
-              <li>Highlight film and speaker cuts</li>
-              <li>5–20 vertical clips for social</li>
-              <li>Photographs, thumbnails and a performance report</li>
-            </ul>
+            <div className={`${styles.fadeOverlay} ${styles.fadeBottom}`} />
           </div>
         </div>
-      </div></section>
+      </section>
 
-      <section className={styles.deep}><div className={styles.wrap}>
-        <div className={styles.secHead + " " + styles.center}><p className={styles.eyebrow}>Content multiplication</p><h2>One event. Twenty assets.</h2><div className={styles.rule}></div>
-          <p className={styles.lead}>Most suppliers hand over a single long recording. We plan the follow-up content before the event starts, so the material exists when your communications team needs it.</p></div>
-        <div className={styles.grid + " " + styles.g4}>
-          <div className={styles.card}><div className={styles.icon}>1</div><h3>Live programme</h3><p>The directed broadcast, delivered to every agreed destination.</p></div>
-          <div className={styles.card}><div className={styles.icon}>2</div><h3>Master recording</h3><p>A clean, full-length local master you keep and archive.</p></div>
-          <div className={styles.card}><div className={styles.icon}>3</div><h3>Highlight film</h3><p>A 2–5 minute hero edit for your website and channels.</p></div>
-          <div className={styles.card}><div className={styles.icon}>4</div><h3>Clips &amp; stills</h3><p>Vertical clips, speaker cuts, quote cards and photographs.</p></div>
+      <section className={styles.deep}>
+        <div className={styles.wrap}>
+          <div className={styles.secHead + ' ' + styles.center}>
+            <p className={styles.eyebrow}>Content multiplication</p>
+            <h2>One event. Twenty assets.</h2>
+            <div className={styles.rule}></div>
+            <p className={styles.lead}>
+              Most suppliers hand over a single long recording. We plan the
+              follow-up content before the event starts, so the material
+              exists when your communications team needs it.
+            </p>
+          </div>
+          <div className={styles.grid + ' ' + styles.g4}>
+            <div className={styles.card}>
+              <div className={styles.icon}>1</div>
+              <h3>Live programme</h3>
+              <p>The directed broadcast, delivered to every agreed destination.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.icon}>2</div>
+              <h3>Master recording</h3>
+              <p>A clean, full-length local master you keep and archive.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.icon}>3</div>
+              <h3>Highlight film</h3>
+              <p>A 2–5 minute hero edit for your website and channels.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.icon}>4</div>
+              <h3>Clips &amp; stills</h3>
+              <p>Vertical clips, speaker cuts, quote cards and photographs.</p>
+            </div>
+          </div>
         </div>
-      </div></section>
+      </section>
 
-      <section><div className={styles.wrap}><div className={styles.callout}>
-        <h2>Not sure which service you need?</h2>
-        <p>Send us the event. We'll tell you the smallest production that will do the job properly — and say so if you don't need the bigger package.</p>
-        <div className={styles["btn-row"]}><a className={styles.btn + " " + styles["btn-dark"]} href="contact.html">Talk to a producer</a></div>
-      </div></div></section>
+      <section>
+        <div className={styles.wrap}>
+          <div className={styles.callout}>
+            <h2>Not sure which service you need?</h2>
+            <p>
+              Send us the event. We'll tell you the smallest production that
+              will do the job properly — and say so if you don't need the
+              bigger package.
+            </p>
+            <div className={styles['btn-row']}>
+              <a className={styles.btn + ' ' + styles['btn-dark']} href="contact.html">
+                Talk to a producer
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
