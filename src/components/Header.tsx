@@ -18,6 +18,7 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -27,6 +28,18 @@ function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 960);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -66,9 +79,11 @@ function Header() {
             ))}
           </ul>
 
-          <Link to="/contact" className={`${styles.cta} btn btn-gold`}>
-            Request a Quote
-          </Link>
+          {!isMobile && (
+            <Link to="/contact" className={`${styles.cta} btn btn-gold`}>
+              Request a Quote
+            </Link>
+          )}
         </nav>
       </div>
     </header>
