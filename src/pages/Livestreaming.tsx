@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import styles from './Livestreaming.module.css';
+import { useScrollReveal } from '@/hooks/useInView';
 
 const particles = Array.from({ length: 22 }, (_, index) => ({
   id: index,
@@ -12,6 +13,9 @@ const particles = Array.from({ length: 22 }, (_, index) => ({
 }));
 
 function Livestreaming() {
+  const { ref: gridRef, inView: gridInView } = useScrollReveal<HTMLDivElement>()
+  const { ref: startGridRef, inView: startGridInView } = useScrollReveal<HTMLDivElement>()
+  const { ref: splitRef, inView: splitInView } = useScrollReveal<HTMLDivElement>()
   return (
     <>
       <Hero
@@ -23,7 +27,7 @@ function Livestreaming() {
       />
 
       <section><div className={styles.wrap}>
-        <div className={styles.grid + " " + styles.g3}>
+        <div ref={gridRef} className={`${styles.grid} ${styles.g3} ${gridInView ? styles.revealed : ''}`}>
           <div className={styles.card}><div className={styles.icon}>A</div><h3>Multi-camera production</h3><p>Wide, close and detail angles so the audience always sees the right thing — presenter, slide, audience reaction or stage.</p></div>
           <div className={styles.card}><div className={styles.icon}>B</div><h3>Professional audio</h3><p>A clean, isolated feed from the venue console or our own microphones, monitored on headphones for the whole broadcast. Audio is where most streams fail.</p></div>
           <div className={styles.card}><div className={styles.icon}>C</div><h3>Live directing</h3><p>A director calls the show against your run sheet, so the stream has pacing and intent rather than a locked-off wide shot.</p></div>
@@ -76,13 +80,13 @@ function Livestreaming() {
           <h2>What type of event are you streaming?</h2>
           <div className={styles.rule}></div>
         </div>
-        <div className={styles.grid + ' ' + styles.g4}>
+        <div ref={startGridRef} className={`${styles.grid} ${styles.g4} ${startGridInView ? styles.revealed : ''}`}>
           <div className={styles.card}><h3>Church service</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Conference</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>AGM / board meeting</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Product launch</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Wedding</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Concert</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Masterclass / training</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Government event</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>NGO forum</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Graduation</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Sports event</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div><div className={styles.card}><h3>Press conference</h3><p><a href="contact.html" style={{ color: '#FFD34D', fontWeight: 700 }}>Get a quote &rarr;</a></p></div>
         </div>
       </div></section>
 
       <section><div className={styles.wrap}>
-        <div className={styles.split}>
+        <div ref={splitRef} className={`${styles.split} ${splitInView ? styles.revealed : ''}`}>
           <div>
             <p className={styles.eyebrow}>Included as standard</p>
             <h2>Every livestream, every package</h2>

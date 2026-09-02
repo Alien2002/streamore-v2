@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import Hero from '@/components/Hero';
 import styles from './Packages.module.css';
+import { useScrollReveal } from '@/hooks/useInView';
 
 function Packages() {
   const [revealed, setRevealed] = useState(false);
+  const { ref: promiseRef, inView: promiseInView } = useScrollReveal<HTMLDivElement>()
+  const { ref: tiersRef, inView: tiersInView } = useScrollReveal<HTMLDivElement>()
 
   useEffect(() => {
     // Wait a frame so the browser paints the hidden state first,
@@ -27,7 +30,7 @@ function Packages() {
       />
 
       <section><div className={styles.wrap}>
-        <div className={`${styles.tiers} ${revealedClass}`}>
+        <div ref={tiersRef} className={`${styles.tiers} ${tiersInView ? revealedClass : ''}`}>
           <div className={`${styles.tier} ${styles.revealTier}`}>
             <h3>Basic</h3>
             <p className={styles.price}>TZS 1.5M – 3M<small>per event</small></p>
@@ -109,7 +112,9 @@ function Packages() {
       </div></section>
 
       <section><div className={styles.wrap}>
-        <div className={`${styles.split} ${revealedClass}`}>
+        <div
+          ref={promiseRef}
+          className={`${styles.split} ${promiseInView ? revealedClass : ''}`}>
           <div>
             <p className={styles.eyebrow}>Add-ons</p>
             <h2>Priced as line items</h2>
@@ -145,7 +150,7 @@ function Packages() {
         </div>
       </div></section>
 
-      <section className={styles.deep}><div className={styles.wrap}><div className={styles.secHead + " " + styles.center}><p className={styles.eyebrow}>Choosing a package</p><h2>Pick by risk, not by camera count</h2><div className={styles.rule}></div></div>
+      {/* <section className={styles.deep}><div className={styles.wrap}><div className={styles.secHead + " " + styles.center}><p className={styles.eyebrow}>Choosing a package</p><h2>Pick by risk, not by camera count</h2><div className={styles.rule}></div></div>
         <div className={`${styles.tableWrap} ${revealedClass}`} style={{ background: 'transparent' }}><table>
           <thead><tr><th>If this is true</th><th>Choose</th><th>Because</th></tr></thead>
           <tbody>
@@ -155,7 +160,7 @@ function Packages() {
             <tr className={styles.revealRow}><td>Outdoor, multi-room, national profile, live audience at scale</td><td><strong>Custom</strong></td><td>Power, connectivity and command structure must be engineered</td></tr>
           </tbody>
         </table></div>
-      </div></section>
+      </div></section> */}
     </>
   );
 }

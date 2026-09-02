@@ -98,6 +98,36 @@ a {
   }
 }
 
+/* Two-column split: expand from center and fade in */
+.split {
+        display: flex;
+        gap: 28px;
+        align-items: flex-start;
+}
+
+.split > div {
+        flex: 1 1 0;
+        transform-origin: center;
+        opacity: 0;
+        transform: scaleX(0.6) scaleY(0.98);
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                                opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealed .split > div,
+.split.revealed > div {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+}
+
+.revealed .split > div:first-child { transition-delay: 60ms; }
+.revealed .split > div:last-child  { transition-delay: 140ms; }
+
+@media (max-width: 880px) {
+        .split { flex-direction: column; }
+        .split > div { transform-origin: center; }
+}
+
 
 h1,
 h2,

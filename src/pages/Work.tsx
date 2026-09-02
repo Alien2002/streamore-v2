@@ -1,7 +1,69 @@
 import Hero from '@/components/Hero';
 import styles from './Work.module.css';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
+// TODO: swap `avatar` for a real client headshot once you have one —
+// these are placeholder images so the layout has something to show.
+const testimonials = [
+  {
+    name: 'Name Surname',
+    role: 'Role — Organisation',
+    quote: 'Add a client quote here that names the outcome, not the equipment.',
+    avatar: 'https://i.pravatar.cc/100?img=12',
+  },
+  {
+    name: 'Name Surname',
+    role: 'Role — Organisation',
+    quote: 'Add a client quote here that names the outcome, not the equipment.',
+    avatar: 'https://i.pravatar.cc/100?img=32',
+  },
+  {
+    name: 'Name Surname',
+    role: 'Role — Organisation',
+    quote: 'Add a client quote here that names the outcome, not the equipment.',
+    avatar: 'https://i.pravatar.cc/100?img=47',
+  },
+];
+
+const particles = Array.from({ length: 22 }, (_, index) => ({
+  id: index,
+  left: `${(index * 11.5) % 100}%`,
+  top: `${(index * 17.2 + 8) % 100}%`,
+  size: 2 + (index % 5),
+  duration: 8 + (index % 6),
+  delay: (index % 7) * 0.9,
+  opacity: 0.18 + (index % 4) * 0.12,
+}));
 
 function Work() {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const track = trackRef.current;
+      if (!track) return;
+
+      // Same seamless-loop trick as the vertical marquee: the track
+      // renders the testimonial list TWICE back to back, so half of
+      // its scrollWidth is exactly one full loop. Animating x from 0
+      // to -halfWidth and repeating is invisible at the reset point.
+      const halfWidth = track.scrollWidth / 2;
+
+      tweenRef.current = gsap.fromTo(
+        track,
+        { x: 0 },
+        { x: -halfWidth, duration: 32, ease: 'none', repeat: -1 }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  const pause = () => tweenRef.current?.pause();
+  const resume = () => tweenRef.current?.resume();
+
   return (
     <>
       <Hero
@@ -57,7 +119,7 @@ function Work() {
       </div></section>
 
       <section className={styles.alt}><div className={styles.wrap}>
-        <div className={styles.secHead}><p className={styles.eyebrow}>Case study format</p><h2>What every Streamore case study contains</h2><div className="rule"></div></div>
+        <div className={styles.secHead}><p className={styles.eyebrow}>Case study format</p><h2>What every Streamore case study contains</h2><div className={styles.rule}></div></div>
         <div className={styles.tableWrap}><table>
           <thead><tr><th>Section</th><th>What we publish</th><th>Why a buyer cares</th></tr></thead>
           <tbody>
@@ -71,13 +133,59 @@ function Work() {
         </table></div>
       </div></section>
 
-      <section className={styles.deep}><div className={styles.wrap}>
-        <div className={styles.secHead} style={{ textAlign: 'center' }}><p className={styles.eyebrow}>Client words</p><h2>Testimonials</h2><div className="rule"></div></div>
-        <div className={styles.grid} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-          <div className={styles.card}><p className={styles.quote} style={{ fontSize: '1rem', color: '#fff', marginBottom: '16px' }}>Add a client quote here that names the outcome, not the equipment.</p><p className={styles.note} style={{ color: '#93A2BE' }}>Name, role — Organisation</p></div><div className={styles.card}><p className={styles.quote} style={{ fontSize: '1rem', color: '#fff', marginBottom: '16px' }}>Add a client quote here that names the outcome, not the equipment.</p><p className={styles.note} style={{ color: '#93A2BE' }}>Name, role — Organisation</p></div><div className={styles.card}><p className={styles.quote} style={{ fontSize: '1rem', color: '#fff', marginBottom: '16px' }}>Add a client quote here that names the outcome, not the equipment.</p><p className={styles.note} style={{ color: '#93A2BE' }}>Name, role — Organisation</p></div>
+      <section className={styles.deep + ' ' + styles.particlesSection}>
+        <div className={styles.particleLayer} aria-hidden="true">
+          {particles.map((particle) => (
+            <span
+              key={particle.id}
+              className={styles.particle}
+              style={{
+                left: particle.left,
+                top: particle.top,
+                width: particle.size,
+                height: particle.size,
+                opacity: particle.opacity,
+                animationDuration: `${particle.duration}s`,
+                animationDelay: `${particle.delay}s`,
+              }}
+            />
+          ))}
         </div>
-        <div className={styles.btnRow} style={{ justifyContent: 'center' }}><a className={styles.btn} href="contact.html">Request references</a></div>
-      </div></section>
+        <div className={styles.wrap}>
+          <div className={`${styles.secHead} ${styles.center}`}><p className={styles.eyebrow}>Client words</p><h2>Testimonials</h2><div className={styles.rule}></div></div>
+
+          <div
+            className={styles.testimonialViewport}
+            onMouseEnter={pause}
+            onMouseLeave={resume}
+          >
+            <div className={`${styles.fadeOverlay} ${styles.fadeLeft}`} />
+
+            <div className={styles.testimonialTrack} ref={trackRef}>
+              {[...testimonials, ...testimonials].map((t, i) => (
+                <div className={styles.testimonialCard} key={i}>
+                  <div className={styles.testimonialHead}>
+                    <div>
+                      <p className={styles.testimonialName}>{t.name}</p>
+                      <p className={styles.testimonialRole}>{t.role}</p>
+                    </div>
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      className={styles.testimonialAvatar}
+                    />
+                  </div>
+                  <p className={styles.testimonialQuote}>&ldquo;{t.quote}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+
+            <div className={`${styles.fadeOverlay} ${styles.fadeRight}`} />
+          </div>
+
+          {/* <div className={styles.btnRow} style={{ justifyContent: 'center' }}><a className={styles.btn} href="contact.html">Request references</a></div> */}
+        </div>
+      </section>
     </>
   );
 }
