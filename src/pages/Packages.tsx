@@ -33,7 +33,7 @@ function Packages() {
         <div ref={tiersRef} className={`${styles.tiers} ${tiersInView ? revealedClass : ''}`}>
           <div className={`${styles.tier} ${styles.revealTier}`}>
             <h3>Basic</h3>
-            <p className={styles.price}>TZS 1.5M – 3M<small>per event</small></p>
+            {/* <p className={styles.price}>TZS 1.5M – 3M<small>per event</small></p> */}
             <p className={styles.note}>Single-room streams, small ceremonies, weekly services, training sessions.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
               <li>1–2 cameras, basic switching</li>
@@ -49,7 +49,7 @@ function Packages() {
           <div className={`${styles.tier} ${styles.feature} ${styles.revealTier}`}>
             <span className={styles.badge}>Most booked</span>
             <h3>Professional</h3>
-            <p className={styles.price}>TZS 4M – 8M<small>per event</small></p>
+            {/* <p className={styles.price}>TZS 4M – 8M<small>per event</small></p> */}
             <p className={styles.note}>Corporate conferences, AGMs, launches, hybrid meetings, church conferences.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
               <li>2–3 cameras with a broadcast director</li>
@@ -65,7 +65,7 @@ function Packages() {
 
           <div className={`${styles.tier} ${styles.revealTier}`}>
             <h3>Broadcast</h3>
-            <p className={styles.price}>TZS 8M – 15M<small>per event</small></p>
+            {/* <p className={styles.price}>TZS 8M – 15M<small>per event</small></p> */}
             <p className={styles.note}>Multi-day conferences, hybrid summits, high-stakes public and donor events.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
               <li>4–5 cameras, show caller and comms</li>
@@ -81,7 +81,7 @@ function Packages() {
 
           <div className={`${styles.tier} ${styles.revealTier}`}>
             <h3>Custom</h3>
-            <p className={styles.price}>From TZS 15M<small>per event / per project</small></p>
+            {/* <p className={styles.price}>From TZS 15M<small>per event / per project</small></p> */}
             <p className={styles.note}>Major outdoor events, multi-room venues, national broadcasts, series production.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
               <li>4–8 cameras, extended crew</li>
