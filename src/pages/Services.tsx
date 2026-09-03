@@ -9,7 +9,6 @@ const cardsData = [
   {
     num: '01',
     title: 'Multi-camera livestreaming',
-    image: 'multi_camera.jpg',
     desc: 'Our specialisation. Two to eight cameras, live directing, professional audio, graphics and simultaneous delivery to public or private destinations.',
     items: [
       'Churches, conferences and corporate events',
@@ -21,7 +20,6 @@ const cardsData = [
   {
     num: '02',
     title: 'Live event production',
-    image: 'live_event.JPG',
     desc: 'The technical production behind the broadcast — and behind the screens in the room.',
     items: [
       'Camera operation and vision mixing',
@@ -33,7 +31,6 @@ const cardsData = [
   {
     num: '03',
     title: 'Hybrid event production',
-    image: 'hybrid_event.jpg',
     desc: 'One show, two audiences. The people in the room and the people online both get a complete experience.',
     items: [
       'Remote speakers and panellists',
@@ -45,7 +42,6 @@ const cardsData = [
   {
     num: '04',
     title: 'Corporate broadcasting',
-    image: 'coporate.jpg',
     desc: 'For companies, banks, NGOs, associations and institutions where the message carries weight.',
     items: [
       'AGMs, board meetings and town halls',
@@ -57,7 +53,6 @@ const cardsData = [
   {
     num: '05',
     title: 'Church production',
-    image: 'church.jpg',
     desc: 'Weekly production, not one-off streaming — delivered on contract with a consistent look and crew.',
     items: [
       'Sunday services and worship nights',
@@ -69,7 +64,6 @@ const cardsData = [
   {
     num: '06',
     title: 'Event broadcasting',
-    image: 'event_broadcast.JPG',
     desc: 'Larger events with multiple rooms, stages, feeds and stakeholders.',
     items: [
       'Multi-camera crew with a show caller',
@@ -81,7 +75,6 @@ const cardsData = [
   {
     num: '07',
     title: 'Video production',
-    image: 'video_production.JPG',
     desc: 'Supporting service. Corporate and event films that share the same look as your broadcast.',
     items: [
       'Corporate and brand films',
@@ -93,7 +86,6 @@ const cardsData = [
   {
     num: '08',
     title: 'Photography',
-    image: 'photography.jpg',
     desc: 'Supporting service. Stills captured alongside the broadcast, delivered to the same deadline.',
     items: [
       'Corporate and conference photography',
@@ -105,7 +97,6 @@ const cardsData = [
   {
     num: '09',
     title: 'Podcast production',
-    image: 'podcast.JPG',
     desc: 'Studio and on-location podcast production, built as a multi-camera show rather than a microphone in a room.',
     items: [
       'Multi-camera studio recording',
@@ -117,7 +108,6 @@ const cardsData = [
   {
     num: '10',
     title: 'Content production',
-    image: 'content.JPG',
     desc: 'The reason a Streamore production keeps paying after the event.',
     items: [
       'Master recording and clean replay',
@@ -129,15 +119,6 @@ const cardsData = [
 ];
 
 const COLUMN_COUNT = 3;
-const particles = Array.from({ length: 22 }, (_, index) => ({
-  id: index,
-  left: `${(index * 11.5) % 100}%`,
-  top: `${(index * 17.2 + 8) % 100}%`,
-  size: 2 + (index % 5),
-  duration: 8 + (index % 6),
-  delay: (index % 7) * 0.9,
-  opacity: 0.18 + (index % 4) * 0.12,
-}));
 
 // Round-robin the cards into columns so each column gets a mix of
 // short/long cards rather than one column being all "tall" cards.
@@ -145,22 +126,15 @@ const columns = Array.from({ length: COLUMN_COUNT }, (_, colIndex) =>
   cardsData.filter((_, i) => i % COLUMN_COUNT === colIndex)
 );
 
-function ServiceCard({ card }: { card: typeof cardsData[number] }) {
+function ServiceCard({ card }: { card: typeof cardsData[0] }) {
   return (
-    <div
-      className={styles.card + ' ' + styles.bgImage}
-      style={{
-        backgroundImage: `linear-gradient(180deg, rgba(12,18,28,0.74), rgba(12,18,28,0.34)), url('/${card.image}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <div className={styles.card}>
+      <p className={styles.num}>{card.num}</p>
       <h3>{card.title}</h3>
-      <p style={{ marginBottom: '16px', color: 'rgba(255,255,255,0.9)', marginTop: '1rem' }}>{card.desc}</p>
+      <p style={{ marginBottom: '16px' }}>{card.desc}</p>
       <ul className={styles.check}>
         {card.items.map((item) => (
-          <li key={item} style={{ color: 'rgba(255,255,255,0.9)' }}>{item}</li>
+          <li key={item}>{item}</li>
         ))}
       </ul>
     </div>
@@ -176,13 +150,15 @@ function Services() {
       colRefs.current.forEach((col, i) => {
         if (!col) return;
 
-        // Each column renders its card list TWICE back to back (see the
-        // render below). That means half of the column's scrollHeight is
-        // exactly one full loop — animating y from 0 to -halfHeight (or
-        // the reverse) and repeating is therefore a seamless loop: the
-        // instant the tween resets, the duplicated content is sitting in
-        // the exact same visual position as the start.
-        const halfHeight = col.scrollHeight / 2;
+        // scrollHeight/2 is NOT reliable here: with a flex `gap`, the
+        // total number of gaps across the doubled list doesn't split
+        // evenly in half, so that estimate is off by a fraction of a
+        // gap — a visible seam at the loop point. Instead, measure the
+        // real offsetTop of the first duplicate card: that's the exact
+        // pixel distance one full loop needs to travel.
+        const cards = col.children as HTMLCollectionOf<HTMLElement>;
+        const half = cards.length / 2;
+        const halfHeight = cards[half].offsetTop - cards[0].offsetTop;
 
         // Even columns drift upward, odd columns drift downward.
         const goingUp = i % 2 === 0;
@@ -219,7 +195,6 @@ function Services() {
       <Hero
         title1="One specialisation."
         title2="A full production chain."
-        bgImage="services.jpg"
         subtitle="Multi-camera livestreaming is the centre of everything we do. Every other service exists to strengthen the broadcast or extend its value once the room empties."
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />
@@ -251,24 +226,7 @@ function Services() {
         </div>
       </section>
 
-      <section className={styles.deep + ' ' + styles.particlesSection}>
-        <div className={styles.particleLayer} aria-hidden="true">
-          {particles.map((particle) => (
-            <span
-              key={particle.id}
-              className={styles.particle}
-              style={{
-                left: particle.left,
-                top: particle.top,
-                width: particle.size,
-                height: particle.size,
-                opacity: particle.opacity,
-                animationDuration: `${particle.duration}s`,
-                animationDelay: `${particle.delay}s`,
-              }}
-            />
-          ))}
-        </div>
+      <section className={styles.deep}>
         <div className={styles.wrap}>
           <div className={styles.secHead + ' ' + styles.center}>
             <p className={styles.eyebrow}>Content multiplication</p>
