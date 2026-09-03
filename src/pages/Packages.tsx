@@ -68,7 +68,7 @@ function Packages() {
             {/* <p className={styles.price}>TZS 8M – 15M<small>per event</small></p> */}
             <p className={styles.note}>Multi-day conferences, hybrid summits, high-stakes public and donor events.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>4–5 cameras, show caller and comms</li>
+              <li>7-12 cameras, show caller and comms</li>
               <li>Remote speakers and moderated Q&amp;A</li>
               <li>Captions or interpretation feed</li>
               <li>Redundant internet paths, monitored</li>
