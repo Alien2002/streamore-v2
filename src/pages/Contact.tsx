@@ -2,17 +2,11 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import Hero from '@/components/Hero';
 import Button from '@/components/Button';
-import { FormEvent, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import styles from './Contact.module.css';
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // TODO: Connect to Formspree, Netlify Forms, or custom endpoint
-    setSubmitted(true);
-  };
+  const [state, handleSubmit] = useForm('meaqknaj');
 
   return (
     <>
@@ -59,6 +53,7 @@ function Contact() {
                     placeholder="you@organisation.co.tz"
                     required
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
                 <div className={styles.field}>
                   <label htmlFor="phone">Phone / WhatsApp *</label>
@@ -137,16 +132,17 @@ function Contact() {
                   placeholder="Audience size, remote speakers, languages, screens in the room, who else is supplying stage or PA, and anything that worries you about the broadcast."
                   required
                 ></textarea>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
 
-              <Button type="submit" size="large">
-                Send the brief
+              <Button type="submit" size="large" disabled={state.submitting}>
+                {state.submitting ? 'Sending…' : 'Send the brief'}
               </Button>
 
-              {submitted && (
+              {state.succeeded && (
                 <p className={styles.success}>
-                  Thank you — connect this form to your email or CRM to receive briefs. Meanwhile, call
-                  or WhatsApp us directly.
+                  Thank you — your brief has been sent. We will contact you shortly. Meanwhile,
+                  call or WhatsApp us directly.
                 </p>
               )}
             </form>
