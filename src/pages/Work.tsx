@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import styles from './Work.module.css';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import LogoMarquee from '@/components/Logomarquee';
 
 // TODO: swap `avatar` for a real client headshot once you have one —
 // these are placeholder images so the layout has something to show.
@@ -118,21 +119,6 @@ function Work() {
         </div>
       </div></section>
 
-      <section className={styles.alt}><div className={styles.wrap}>
-        <div className={styles.secHead}><p className={styles.eyebrow}>Case study format</p><h2>What every Streamore case study contains</h2><div className={styles.rule}></div></div>
-        <div className={styles.tableWrap}><table>
-          <thead><tr><th>Section</th><th>What we publish</th><th>Why a buyer cares</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Objective</strong></td><td>What the client needed the broadcast to achieve</td><td>Shows we design to a purpose, not to an equipment list</td></tr>
-            <tr><td><strong>Production design</strong></td><td>Camera plan, audio routing, graphics and crew roles</td><td>Demonstrates engineering rather than improvisation</td></tr>
-            <tr><td><strong>Connectivity plan</strong></td><td>Tested upload, primary and backup path, monitoring</td><td>Proves the invisible part of the job was handled</td></tr>
-            <tr><td><strong>Result</strong></td><td>Peak concurrent viewers, total views, watch time, questions</td><td>Turns a stream into a measurable communications outcome</td></tr>
-            <tr><td><strong>Deliverables</strong></td><td>Master, highlight film, clips, photos, report and dates met</td><td>Shows we finish, not just show up</td></tr>
-            <tr><td><strong>One thing that went wrong</strong></td><td>What happened and how it was contained</td><td>Nothing builds trust with a procurement team faster</td></tr>
-          </tbody>
-        </table></div>
-      </div></section>
-
       <section className={styles.deep + ' ' + styles.particlesSection}>
         <div className={styles.particleLayer} aria-hidden="true">
           {particles.map((particle) => (
@@ -186,6 +172,8 @@ function Work() {
           {/* <div className={styles.btnRow} style={{ justifyContent: 'center' }}><a className={styles.btn} href="contact.html">Request references</a></div> */}
         </div>
       </section>
+
+      <LogoMarquee />
     </>
   );
 }

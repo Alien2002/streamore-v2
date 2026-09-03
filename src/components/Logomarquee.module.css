@@ -1,0 +1,110 @@
+.section {
+    padding: 70px 0 6rem;
+    background: var(--bg-alt);
+}
+
+.wrap {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+}
+
+.eyebrow {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold-dk);
+    margin: 0 0 10px
+}
+
+.heading {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin: 0
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.rows {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.rowViewport {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    width: max-content;
+    will-change: transform;
+}
+
+.logoChip {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8rem;
+}
+
+.logoImage {
+    max-width: 120px;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    /* Reduce extreme brightening and raise base opacity so light/white
+       logos remain visible on lighter backgrounds. */
+    filter: grayscale(1) contrast(.95) opacity(.65);
+    transition: filter .5s cubic-bezier(.4, 0, .2, 1), transform .4s cubic-bezier(.4, 0, .2, 1);
+    display: block;
+}
+
+.logoChip:hover .logoImage {
+    filter: grayscale(0) brightness(1) opacity(1);
+    transform: scale(1.08);
+}
+
+.logoText {
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    color: var(--muted);
+    padding: 10px 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    white-space: nowrap;
+    background: #fff;
+}
+
+.fadeOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 130px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.fadeLeft {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-alt) 0%, transparent 100%);
+}
+
+.fadeRight {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-alt) 0%, transparent 100%);
+}

@@ -5,11 +5,12 @@ import styles from './Home.module.css';
 import HeroSlideshow from '@/components/HeroSlideShow';
 import { useEffect, useState } from 'react';
 import { useScrollReveal } from '@/hooks/useInView';
+import LogoMarquee from '@/components/Logomarquee';
 
 function Home() {
   const { ref: promiseRef, inView: promiseInView } = useScrollReveal<HTMLDivElement>();
   const { ref: servicesRef, inView: servicesInView } = useScrollReveal<HTMLDivElement>();
-  const { ref: workflowRef, inView: workflowInView } = useScrollReveal<HTMLDivElement>();
+  // const { ref: workflowRef, inView: workflowInView } = useScrollReveal<HTMLDivElement>();
   // typing effect...
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
@@ -144,43 +145,6 @@ function Home() {
         </div>
       </div></section>
 
-      {/* Why Streamore */}
-      <section className={styles.dark}><div className={styles.wrap}>
-        <div className={styles.secHead}>
-          <p className={styles.eyebrow}>Why Streamore</p>
-          <h2>Five things that decide whether a broadcast works</h2>
-          <div className={styles.rule}></div>
-        </div>
-        <div className={styles.grid + " " + styles.g2}>
-          <div className={styles.pillar}><div className={styles.icon}>1</div><div><h3>Broadcast thinking</h3><p>We plan shots, sound, story and risk before equipment leaves the store. The production is designed, not improvised.</p></div></div>
-          <div className={styles.pillar}><div className={styles.icon}>2</div><div><h3>Multi-camera direction</h3><p>Different cameras do different jobs, and someone is responsible for what the audience sees at every moment.</p></div></div>
-          <div className={styles.pillar}><div className={styles.icon}>3</div><div><h3>Engineered reliability</h3><p>Internet, audio, power and equipment are tested, duplicated and documented — with a written recovery procedure.</p></div></div>
-          <div className={styles.pillar}><div className={styles.icon}>4</div><div><h3>Published standards</h3><p>Our packages, inclusions, exclusions and protection plan are public. You compare us on evidence, not adjectives.</p></div></div>
-          <div className={styles.pillar}><div className={styles.icon}>5</div><div><h3>Life after the livestream</h3><p>Master recording, highlight film, clips and a performance report — the production keeps working after the event ends.</p></div></div>
-          <div className={styles.pillar}><div className={styles.icon}>6</div><div><h3>You own everything</h3><p>Your channel, your recording, your audience data. We work with delegated access, never as the gatekeeper.</p></div></div>
-        </div>
-      </div></section>
-
-      {/* Production Workflow */}
-      <section><div className={styles.wrap}>
-        <div className={styles.secHead + " " + styles.center}>
-          <p className={styles.eyebrow}>Our production workflow</p>
-          <h2>Eight steps from brief to report</h2>
-          <div className={styles.rule}></div>
-          <p className={styles.lead}>The same process runs on a single-room webinar and on a multi-room national conference. Only the scale changes.</p>
-        </div>
-        <div ref={workflowRef} className={`${styles.steps} ${workflowInView ? styles.revealed : ''}`}>
-          <div className={styles.step}><div><h3>Discover</h3><p>Objective, audience, venue, platforms, languages, remote speakers, production requirements and budget.</p></div></div>
-          <div className={styles.step}><div><h3>Plan</h3><p>Camera plan, audio plan, network plan, crew plan, graphics plan and backup plan — issued to you in writing.</p></div></div>
-          <div className={styles.step}><div><h3>Certify the venue</h3><p>Site survey, sustained upload test, power and cable routes, camera positions. A stream is only quoted once the venue passes.</p></div></div>
-          <div className={styles.step}><div><h3>Build</h3><p>Cameras, lenses, switchers, audio, lighting, encoders, recorders and network are rigged, labelled and powered.</p></div></div>
-          <div className={styles.step}><div><h3>Test &amp; rehearse</h3><p>Video, audio, internet, graphics, recording and backup — verified against a preflight checklist and signed off before doors open.</p></div></div>
-          <div className={styles.step}><div><h3>Produce</h3><p>Director, camera operators, audio engineer, graphics and streaming engineer work the show on comms against the run sheet.</p></div></div>
-          <div className={styles.step}><div><h3>Deliver</h3><p>Master recording, replay, highlight film, clips, photographs and social assets handed over on an agreed deadline.</p></div></div>
-          <div className={styles.step}><div><h3>Report</h3><p>Peak concurrent viewers, total views, watch time, average view duration, questions, replay performance — within 72 hours.</p></div></div>
-        </div>
-      </div></section>
-
       <section className={styles.deep}>
         <div className={styles.particlesSection}>
           <div className={styles.particleLayer} aria-hidden="true">
@@ -222,6 +186,27 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Logos */}
+      <LogoMarquee />
+      
+      {/* Why Streamore */}
+      <section className={styles.dark}><div className={styles.wrap}>
+        <div className={styles.secHead}>
+          <p className={styles.eyebrow}>Why Streamore</p>
+          <h2>Five things that decide whether a broadcast works</h2>
+          <div className={styles.rule}></div>
+        </div>
+        <div className={styles.grid + " " + styles.g2}>
+          <div className={styles.pillar}><div className={styles.icon}>1</div><div><h3>Broadcast thinking</h3><p>We plan shots, sound, story and risk before equipment leaves the store. The production is designed, not improvised.</p></div></div>
+          <div className={styles.pillar}><div className={styles.icon}>2</div><div><h3>Multi-camera direction</h3><p>Different cameras do different jobs, and someone is responsible for what the audience sees at every moment.</p></div></div>
+          <div className={styles.pillar}><div className={styles.icon}>3</div><div><h3>Engineered reliability</h3><p>Internet, audio, power and equipment are tested, duplicated and documented — with a written recovery procedure.</p></div></div>
+          <div className={styles.pillar}><div className={styles.icon}>4</div><div><h3>Published standards</h3><p>Our packages, inclusions, exclusions and protection plan are public. You compare us on evidence, not adjectives.</p></div></div>
+          <div className={styles.pillar}><div className={styles.icon}>5</div><div><h3>Life after the livestream</h3><p>Master recording, highlight film, clips and a performance report — the production keeps working after the event ends.</p></div></div>
+          <div className={styles.pillar}><div className={styles.icon}>6</div><div><h3>You own everything</h3><p>Your channel, your recording, your audience data. We work with delegated access, never as the gatekeeper.</p></div></div>
+        </div>
+      </div></section>
+
 
       {/* <section className={styles.deep}><div className={styles.wrap}>
         <div className={styles.split}>
