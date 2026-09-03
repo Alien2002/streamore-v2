@@ -43,7 +43,7 @@ function Packages() {
               <li>Local master recording</li>
               <li>Venue upload test and preflight</li>
             </ul>
-            <a className={styles.btn + " " + styles.btnDark} href="contact.html">Request this package</a>
+            <a className={styles.btn + " " + styles.btnDark} href="/contact">Request this package</a>
           </div>
 
           <div className={`${styles.tier} ${styles.feature} ${styles.revealTier}`}>
@@ -60,7 +60,7 @@ function Packages() {
               <li>Master recording + highlight film</li>
               <li>72-hour performance report</li>
             </ul>
-            <a className={styles.btn + " " + styles.btnGold} href="contact.html">Request this package</a>
+            <a className={styles.btn + " " + styles.btnGold} href="/contact">Request this package</a>
           </div>
 
           <div className={`${styles.tier} ${styles.revealTier}`}>
@@ -76,7 +76,7 @@ function Packages() {
               <li>Clip package and highlight film</li>
               <li>Full analytics and delivery report</li>
             </ul>
-            <a className={styles.btn + " " + styles.btnDark} href="contact.html">Request this package</a>
+            <a className={styles.btn + " " + styles.btnDark} href="/contact">Request this package</a>
           </div>
 
           <div className={`${styles.tier} ${styles.revealTier}`}>
@@ -91,7 +91,7 @@ function Packages() {
               <li>Written incident command plan</li>
               <li>Bespoke content and rights package</li>
             </ul>
-            <a className={styles.btn + " " + styles.btnDark} href="contact.html">Start a scoping call</a>
+            <a className={styles.btn + " " + styles.btnDark} href="/contact">Start a scoping call</a>
           </div>
         </div>
         <p className={styles.note} style={{ marginTop: '22px' }}>Rates are indicative and quoted in Tanzanian Shillings, exclusive of applicable taxes. Final pricing depends on crew size, venue conditions, connectivity, travel and deliverables.</p>
@@ -145,7 +145,7 @@ function Packages() {
               <li><strong>Rights:</strong> you own the recording and the channel; our portfolio use is by written permission only.</li>
               <li><strong>Travel:</strong> transport, accommodation and per diem quoted at cost for events outside Dar es Salaam.</li>
             </ul>
-            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="about.html#procurement">See the procurement pack</a></div>
+            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="/about#procurement">See the procurement pack</a></div>
           </div>
         </div>
       </div></section>

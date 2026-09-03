@@ -144,7 +144,7 @@ function Industries() {
       <section className={styles.alt}><div className={styles.wrap}><div className={styles.callout}>
         <h2>Are you an event producer?</h2>
         <p>We offer white-label broadcast production to venues, agencies, hotels, AV suppliers and event producers. You keep the client and the stage — we deliver the stream under your brand, with a named broadcast lead in your crew list.</p>
-        <div className={styles.btnRow}><a className={styles.btn + ' ' + styles.btnDark} href="contact.html">Request partner rates</a></div>
+        <div className={styles.btnRow}><a className={styles.btn + ' ' + styles.btnDark} href="/contact">Request partner rates</a></div>
       </div></div></section>
     </>
   );

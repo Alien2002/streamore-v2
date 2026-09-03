@@ -95,13 +95,13 @@ function About() {
               <li>Workshops for communications and media teams</li>
               <li>Ongoing technical support retainers</li>
             </ul>
-            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnGold} href="contact.html">Enquire about training</a></div>
+            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnGold} href="/contact">Enquire about training</a></div>
           </div>
           <div className={styles.card}>
             <p className={styles.num}>PARTNERSHIPS</p>
             <h3 style={{ color: '#fff' }}>We work inside your production</h3>
             <p>Streamore partners with venues, hotels, event agencies, AV and LED suppliers, PA companies, interpretation providers and connectivity providers. You keep the stage and the client relationship; we deliver the broadcast layer — under your brand where required.</p>
-            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnGhost} href="contact.html">Become a partner</a></div>
+            <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnGhost} href="/contact">Become a partner</a></div>
           </div>
         </div>
       </div></section>

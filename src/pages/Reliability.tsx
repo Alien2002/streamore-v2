@@ -116,7 +116,7 @@ function Reliability() {
       <section className={styles.alt}><div className={styles.wrap}><div className={styles.callout}>
         <h2>Ask any supplier for this page.</h2>
         <p>If a production company cannot show you its connectivity test policy, redundancy plan, crew roles and incident procedure in writing, you are buying a promise instead of a service. Compare ours to anyone's.</p>
-        <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="contact.html">Request the full SLA</a></div>
+        <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="/contact">Request the full SLA</a></div>
       </div></div></section>
     </>
   );

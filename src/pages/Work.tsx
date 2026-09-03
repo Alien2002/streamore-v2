@@ -169,7 +169,7 @@ function Work() {
             <div className={`${styles.fadeOverlay} ${styles.fadeRight}`} />
           </div>
 
-          {/* <div className={styles.btnRow} style={{ justifyContent: 'center' }}><a className={styles.btn} href="contact.html">Request references</a></div> */}
+          {/* <div className={styles.btnRow} style={{ justifyContent: 'center' }}><a className={styles.btn} href="/contact">Request references</a></div> */}
         </div>
       </section>
 

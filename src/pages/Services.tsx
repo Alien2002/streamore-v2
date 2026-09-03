@@ -315,7 +315,7 @@ function Services() {
               bigger package.
             </p>
             <div className={styles['btn-row']}>
-              <a className={styles.btn + ' ' + styles['btn-dark']} href="contact.html">
+              <a className={styles.btn + ' ' + styles['btn-dark']} href="/contact">
                 Talk to a producer
               </a>
             </div>

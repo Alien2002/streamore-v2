@@ -7,7 +7,7 @@ function Footer() {
       <div className={styles.wrap}>
         <div className={styles.fgrid}>
           <div>
-            <a className={styles.brand} href="index.html">
+            <a className={styles.brand} href="/">
               <svg viewBox="0 0 520 108" height="30" role="img" aria-label="Streamore">
                 <defs><linearGradient id="sg30" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#DE9200" /><stop offset="55%" stop-color="#F7B500" /><stop offset="100%" stop-color="#FFD34D" />
@@ -22,21 +22,21 @@ function Footer() {
           <div>
             <h4>Services</h4>
             <ul>
-              <li><a href="livestreaming.html">Multi-camera livestreaming</a></li>
-              <li><a href="services.html">Live event production</a></li>
-              <li><a href="services.html">Hybrid events</a></li>
-              <li><a href="services.html">Video &amp; content production</a></li>
-              <li><a href="services.html">Podcast production</a></li>
+              <li><a href="/livestreaming">Multi-camera livestreaming</a></li>
+              <li><a href="/services">Live event production</a></li>
+              <li><a href="/services">Hybrid events</a></li>
+              <li><a href="/services">Video &amp; content production</a></li>
+              <li><a href="/services">Podcast production</a></li>
             </ul>
           </div>
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="about.html">About Streamore</a></li>
-              <li><a href="reliability.html">How we protect your broadcast</a></li>
-              <li><a href="packages.html">Packages &amp; rates</a></li>
-              <li><a href="work.html">Work &amp; case studies</a></li>
-              <li><a href="about.html#procurement">Procurement pack</a></li>
+              <li><a href="/about">About Streamore</a></li>
+              <li><a href="/reliability">How we protect your broadcast</a></li>
+              <li><a href="/packages">Packages &amp; rates</a></li>
+              <li><a href="/work">Work &amp; case studies</a></li>
+              {/* <li><a href="/about#procurement">Procurement pack</a></li> */}
             </ul>
           </div>
           <div>
@@ -45,7 +45,7 @@ function Footer() {
               <li>Dar es Salaam, Tanzania</li>
               <li><a href="tel:+255715071286">+255 715 071 286</a></li>
               <li><a href="mailto:streamorestudios@gmail.com">streamorestudios@gmail.com</a></li>
-              <li><a href="contact.html">Book a site survey</a></li>
+              <li><a href="/contact">Book a site survey</a></li>
             </ul>
           </div>
         </div>

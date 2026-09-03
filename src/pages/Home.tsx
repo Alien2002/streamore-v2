@@ -74,10 +74,10 @@ function Home() {
             </span>
             </div>
             <div className={styles.buttonGroup}>
-              <Button as="a" href="/livestreaming">
+              <Button as="a" href="/contact">
                 Request a quote
               </Button>
-              <Button variant="ghost" as="a" href="/contact">
+              <Button variant="ghost" as="a" href="/packages">
                 See Packages & rates
               </Button>
             </div>
@@ -102,7 +102,7 @@ function Home() {
             <h2>A broadcast company, not a camera rental.</h2>
             <p className={styles.lead}>Streamore is a Tanzanian media and production company specialising in professional multi-camera livestreaming, hybrid event production and digital content production. We help churches, corporates, NGOs, government institutions, brands and event organisers connect a physical event with the audience that could not be in the room.</p>
             <p className={styles.lead}>A basic livestream is a camera, a laptop and hope. A Streamore production is planning, cameras, audio, lighting, directing, switching, graphics, encoding, tested connectivity, distribution, recording and post-production — run by a named crew against a written run sheet.</p>
-            <div className="btn-row"><a className="btn btn-dark" href="about.html">About Streamore</a></div>
+            <div className="btn-row"><a className="btn btn-dark" href="/about">About Streamore</a></div>
           </div>
           <div>
             <div className={styles.card + " " + styles.revealCard}>
@@ -141,7 +141,7 @@ function Home() {
           <div className={`${styles.card} ${styles.serviceCard} ${styles.medium} ${styles.bgImage}`} style={{ backgroundImage: "linear-gradient(180deg, rgba(12,18,28,0.54), rgba(12,18,28,0.14)), url('podcast.JPG')" }}><div className={styles.icon}>06</div><h3>Content &amp; podcast production</h3><p>One event becomes a master recording, a highlight film, vertical clips, speaker cuts, photographs and social assets. Plus studio and multi-camera podcast production.</p></div>
         </div>
         <div className={styles.btnRow} style={{ justifyContent: 'center' }}>
-          <a className={styles.btn + " " + styles.btnDark} href="services.html">Explore all services</a>
+          <a className={styles.btn + " " + styles.btnDark} href="/services">Explore all services</a>
         </div>
       </div></section>
 
@@ -181,7 +181,7 @@ function Home() {
               <div className={styles.card}><h3>Media</h3><p>Production support for live programming and remote feeds.</p></div>
             </div>
             <div className={styles.btnRow} style={{ justifyContent: "center" }}>
-              <a className={styles.btn + " " + styles.btnDark} href="industries.html">See how we work per sector</a>
+              <a className={styles.btn + " " + styles.btnDark} href="/industries">See how we work per sector</a>
             </div>
           </div>
         </div>
@@ -189,7 +189,7 @@ function Home() {
 
       {/* Logos */}
       <LogoMarquee />
-      
+
       {/* Why Streamore */}
       <section className={styles.dark}><div className={styles.wrap}>
         <div className={styles.secHead}>
@@ -242,7 +242,7 @@ function Home() {
           <p className={styles.eyebrow} style={{ color: "rgba(15,27,51,.7)" }}>Ready when you are</p>
           <h2>Tell us about your event.</h2>
           <p>Send the date, venue, expected audience and platforms. You'll get a written production plan and a firm quote — and if the venue needs a connectivity test first, we'll book it.</p>
-          <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="contact.html">Request a quote</a></div>
+          <div className={styles.btnRow}><a className={styles.btn + " " + styles.btnDark} href="/contact">Request a quote</a></div>
         </div>
       </div></section>
     </>
