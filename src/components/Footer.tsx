@@ -43,8 +43,8 @@ function Footer() {
             <h4>Talk to us</h4>
             <ul>
               <li>Dar es Salaam, Tanzania</li>
-              <li><a href="tel:+255000000000">+255 000 000 000</a></li>
-              <li><a href="mailto:hello@streamore.co.tz">hello@streamore.co.tz</a></li>
+              <li><a href="tel:+255715071286">+255 715 071 286</a></li>
+              <li><a href="mailto:streamorestudios@gmail.com">streamorestudios@gmail.com</a></li>
               <li><a href="contact.html">Book a site survey</a></li>
             </ul>
           </div>
