@@ -100,8 +100,8 @@ function LogoMarquee() {
       </div>
 
       <div className={styles.rows}>
-        <LogoRow logos={rowOneLogos} direction="left" speed={36} />
-        <LogoRow logos={rowTwoLogos} direction="right" speed={42} />
+        <LogoRow logos={rowOneLogos} direction="left" speed={30} />
+        <LogoRow logos={rowTwoLogos} direction="right" speed={36} />
       </div>
     </section>
   );

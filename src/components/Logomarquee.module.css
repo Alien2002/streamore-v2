@@ -42,7 +42,7 @@
 
 .rowViewport {
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .track {
