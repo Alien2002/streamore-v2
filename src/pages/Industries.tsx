@@ -37,7 +37,7 @@ function Industries() {
               <li>Conferences, crusades and worship nights</li>
               <li>Volunteer team training and in-house system design</li>
             </ul>
-            <p style={{ marginTop: '16px', fontWeight: '700', color: '#DE9200' }}>From TZS 1.2M / month</p>
+            {/* <p style={{ marginTop: '16px', fontWeight: '700', color: '#DE9200' }}>From TZS 1.2M / month</p> */}
           </div>
  
           <div className={`${styles.card} ${styles.revealCard}`}>
