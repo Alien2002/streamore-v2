@@ -52,7 +52,7 @@ function Packages() {
             {/* <p className={styles.price}>TZS 4M – 8M<small>per event</small></p> */}
             <p className={styles.note}>Corporate conferences, AGMs, launches, hybrid meetings, church conferences.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>2–3 cameras with a broadcast director</li>
+              <li>4-6 cameras with a broadcast director</li>
               <li>Dedicated audio mix and monitoring</li>
               <li>Full branded graphics package</li>
               <li>Rehearsal day included</li>
