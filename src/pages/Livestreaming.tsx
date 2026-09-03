@@ -37,27 +37,6 @@ function Livestreaming() {
         </div>
       </div></section>
 
-      <section className={styles.alt}><div className={styles.wrap}>
-        <div className={styles.secHead}>
-          <p className={styles.eyebrow}>Technical standard</p>
-          <h2>What "broadcast-grade" actually means here</h2>
-          <div className={styles.rule}></div>
-          <p className={styles.lead}>These are the numbers we work to. Ask any supplier for theirs — the answer tells you a great deal.</p>
-        </div>
-        <div className={styles.tableWrap}><table>
-          <thead><tr><th>Layer</th><th>Streamore standard</th><th>Why it matters to you</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Programme output</strong></td><td>1080p at 25/30fps, H.264, constant bitrate, 2-second keyframes</td><td>Matches what YouTube and Facebook are built to receive, so the stream stays stable and sharp</td></tr>
-            <tr><td><strong>Encode bitrate</strong></td><td>10–12 Mbps for 1080p, adjusted down only after a documented test</td><td>Text on slides stays readable and motion does not smear</td></tr>
-            <tr><td><strong>Upload headroom</strong></td><td>Sustained upload of at least double the encode bitrate on the primary path</td><td>A stream with no headroom drops the moment anyone else uses the network</td></tr>
-            <tr><td><strong>Second path</strong></td><td>An independent connection on a different carrier, tested on site</td><td>One failure does not end your event</td></tr>
-            <tr><td><strong>Audio</strong></td><td>Isolated feed, stereo AAC at 128 Kbps or higher, monitored throughout</td><td>Viewers forgive imperfect pictures; they leave over bad sound</td></tr>
-            <tr><td><strong>Recording</strong></td><td>Local master recorded on site, independent of the stream</td><td>You still have the full event even in a worst-case network failure</td></tr>
-          </tbody>
-        </table></div>
-        <p className={styles.note} style={{ marginTop: '14px' }}>Figures reflect the platforms' own recommended live encoder settings and our venue-testing policy. Final settings are confirmed after the site survey.</p>
-      </div></section>
-
       <section className={styles.dark + ' ' + styles.particlesSection}><div className={styles.particleLayer} aria-hidden="true">
         {particles.map((particle) => (
           <span
