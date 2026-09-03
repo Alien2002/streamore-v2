@@ -38,7 +38,7 @@ function About() {
               <li>Base <span>Dar es Salaam, Tanzania</span></li>
               <li>Coverage <span>Nationwide &amp; East Africa</span></li>
               <li>Specialisation <span>Multi-camera livestreaming</span></li>
-              <li>Production scale <span>1–8 cameras</span></li>
+              <li>Production scale <span>1–12 cameras</span></li>
               <li>Delivery <span>1080p / 4K capture</span></li>
               <li>Contracts <span>Per event, monthly, white-label</span></li>
               <li>Reporting <span>Within 72 hours</span></li>
