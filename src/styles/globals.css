@@ -157,15 +157,35 @@ textarea {
   box-shadow: 0 8px 24px rgba(2, 90, 46, 0.18);
   z-index: 9999;
   transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  animation: whatsapp-bounce 4s ease-in-out infinite;
 }
+
 .whatsapp-fab:hover {
+  animation-play-state: paused;
   transform: translateY(-4px);
   box-shadow: 0 14px 36px rgba(2, 90, 46, 0.22);
 }
+
 .whatsapp-fab svg {
   width: 22px;
   height: 22px;
   color: #fff;
+}
+
+/* Bounces twice, then holds still until the 4s loop restarts */
+@keyframes whatsapp-bounce {
+  0%, 100% { transform: translateY(0); }
+  10%      { transform: translateY(-12px); }
+  20%      { transform: translateY(0); }
+  28%      { transform: translateY(-6px); }
+  36%      { transform: translateY(0); }
+  /* rest until 100% */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-fab {
+    animation: none;
+  }
 }
 
 @media (max-width: 520px) {
