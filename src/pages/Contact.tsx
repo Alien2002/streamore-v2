@@ -156,7 +156,7 @@ function Contact() {
                     Phone / WhatsApp <span>+25571 507 1286</span>
                   </li>
                   <li>
-                    Email <span>streamore@gmail.com</span>
+                    Email <span>streamorestudios@gmail.com</span>
                   </li>
                 </ul>
               </div>
