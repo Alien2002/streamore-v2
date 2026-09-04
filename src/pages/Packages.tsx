@@ -103,7 +103,7 @@ function Packages() {
         <div className={`${styles.tableWrap} ${revealedClass}`}><table>
           <thead><tr><th>Contract</th><th>Indicative rate</th><th>What it covers</th></tr></thead>
           <tbody>
-            <tr className={styles.revealRow}><td><strong>Church monthly</strong></td><td>From TZS 1.2M / month</td><td>Four weekly services, consistent crew and graphics, monthly clip package, channel management</td></tr>
+            <tr className={styles.revealRow}><td><strong>Church monthly</strong></td><td>From TZS 1.5M / month</td><td>Four weekly services, consistent crew and graphics, monthly clip package, channel management</td></tr>
             <tr className={styles.revealRow}><td><strong>Corporate quarterly</strong></td><td>From TZS 3.5M / quarter</td><td>One town hall or webinar per month, standing production plan, reporting after each broadcast</td></tr>
             <tr className={styles.revealRow}><td><strong>Event series</strong></td><td>Negotiated per season</td><td>Multi-episode or multi-city productions with locked crew, look and delivery calendar</td></tr>
             <tr className={styles.revealRow}><td><strong>Partner / white-label</strong></td><td>Sub-contract day rates</td><td>Broadcast crew supplied under your brand for agencies, venues and AV suppliers</td></tr>
