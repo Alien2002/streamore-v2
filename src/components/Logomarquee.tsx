@@ -21,6 +21,7 @@ const rowTwoLogos = [
   { name: 'Mama & Wanae', image: '/logos/mama-na-wanae.png' },
   { name: 'University of Dar es Salaam', image: '/logos/udsm.png' },
   { name: 'Fantuzzi Investments', image: '/logos/fantuzzi-investments.png' },
+  { name: 'Bravo', image: '/logos/bravo.png' },
 ];
 
 // How many times each row's logo list repeats in the track. Two copies
