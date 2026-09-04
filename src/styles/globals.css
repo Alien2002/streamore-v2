@@ -140,3 +140,39 @@ textarea {
   gap: 14px;
   margin-top: 26px
 }
+
+/* Floating WhatsApp button */
+.whatsapp-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(2, 90, 46, 0.18);
+  z-index: 9999;
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.whatsapp-fab:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(2, 90, 46, 0.22);
+}
+.whatsapp-fab svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+@media (max-width: 520px) {
+  .whatsapp-fab {
+    right: 12px;
+    bottom: 12px;
+    width: 48px;
+    height: 48px;
+  }
+}
