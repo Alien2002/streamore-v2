@@ -104,10 +104,10 @@ function Contact() {
                   <label htmlFor="package">Package of interest</label>
                   <select id="package" name="package" defaultValue="Not sure — advise me">
                     <option>Not sure — advise me</option>
-                    <option>Basic (TZS 1.5M – 3M)</option>
-                    <option>Professional (TZS 4M – 8M)</option>
-                    <option>Broadcast (TZS 8M – 15M)</option>
-                    <option>Custom (from TZS 15M)</option>
+                    <option>Basic</option>
+                    <option>Professional</option>
+                    <option>Broadcast</option>
+                    <option>Custom</option>
                     <option>Monthly retainer / series</option>
                     <option>White-label partner production</option>
                   </select>
