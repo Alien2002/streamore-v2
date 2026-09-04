@@ -84,7 +84,7 @@ function Packages() {
             {/* <p className={styles.price}>From TZS 15M<small>per event / per project</small></p> */}
             <p className={styles.note}>Major outdoor events, multi-room venues, national broadcasts, series production.</p>
             <ul className={`${styles.check} ${styles.revealList}`}>
-              <li>4–8 cameras, extended crew</li>
+              <li>1-16 cameras, extended crew</li>
               <li>Multi-room and overflow feeds</li>
               <li>Backup power and dual carriers</li>
               <li>Stage, LED and PA coordination</li>
