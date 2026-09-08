@@ -8,10 +8,10 @@ import LogoMarquee from '@/components/Logomarquee';
 // these are placeholder images so the layout has something to show.
 const testimonials = [
   {
-    name: 'Name Surname',
-    role: 'Role — Organisation',
-    quote: 'Add a client quote here that names the outcome, not the equipment.',
-    avatar: 'https://i.pravatar.cc/100?img=12',
+    name: 'Samwel Kamoyo',
+    role: 'Program coordinator AICT Magomeni',
+    quote: 'Streamore provides reliable and timely services, with great attention to detail. Their professionalism and commitment to quality ensure that every project is delivered accurately and to a high standard.',
+    avatar: '/testimonial_profiles/samwel_kamoyo.jpg',
   },
   {
     name: 'Name Surname',
