@@ -14,16 +14,16 @@ const testimonials = [
     avatar: '/testimonial_profiles/samwel_kamoyo.jpg',
   },
   {
-    name: 'Name Surname',
-    role: 'Role — Organisation',
-    quote: 'Add a client quote here that names the outcome, not the equipment.',
-    avatar: 'https://i.pravatar.cc/100?img=32',
+    name: 'Gaspar Ruzemvya',
+    role: 'Multimedia Marketing Specialist - Sika Tanzania',
+    quote: 'Streamore Studios consistently delivers quality media coverage with a strong eye for detail. Their professionalism, creativity, and reliability make them a great partner for capturing events and turning moments into impactful visual stories. Highly recommended for photography, videography, documentaries, and live streaming.',
+    avatar: '/testimonial_profiles/gaspar_ruzemvya.jpg',
   },
   {
-    name: 'Name Surname',
-    role: 'Role — Organisation',
-    quote: 'Add a client quote here that names the outcome, not the equipment.',
-    avatar: 'https://i.pravatar.cc/100?img=47',
+    name: 'Ludovick Momburi',
+    role: 'Communications, events and membership officer, TPSF',
+    quote: 'Streamore Studios is a team that truly understands how to tell a story through visuals. From the quality of their work to their creativity and execution, they consistently deliver impressive results. They are dependable, professional, and easy to work with. Definitely a team I would recommend for anyone looking for high-quality media production services.',
+    avatar: '/testimonial_profiles/ludovick_momburi.jpg',
   },
 ];
 
